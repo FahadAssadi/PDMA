@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { routes } from '../../app.routes';
 
 @Component({
@@ -11,7 +11,7 @@ import { routes } from '../../app.routes';
 })
 export class HeaderComponent {
   // ignore the first two routes and the last route
-  navLinks = routes.slice(2, routes.length - 1);
+  navLinks: Routes = routes.slice(2, routes.length - 1);
 
   // Define indices where we want to insert dividers
   dividerIndices: number[] = [3, 7];
