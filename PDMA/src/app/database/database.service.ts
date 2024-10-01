@@ -1,5 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Driver } from '../models/models';
+import { Package } from '../models/models';
 
 const API_URL = 'http://localhost:8080/api/';
 
@@ -14,38 +17,39 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class DatabaseService {
-
   constructor(private http:HttpClient) { }
 
-  createDriver(data: any) {
-    return this.http.post(API_URL + 'driver', data, httpOptions);
+  // Driver CRUD operations
+  createDriver(data: Driver): Observable<Driver> {
+    return this.http.post<Driver>(API_URL + 'driver', data, httpOptions);
   }
 
-  getDrivers() {
-    return this.http.get(API_URL + 'driver', httpOptions);
+  getDrivers(): Observable<Driver[]> {
+    return this.http.get<Driver[]>(API_URL + 'driver', httpOptions);
   }
 
-  deleteDriver(id: any) {
-    return this.http.delete(API_URL + 'driver/' + id, httpOptions);
+  deleteDriver(id: string): Observable<void> {
+    return this.http.delete<void>(API_URL + 'driver/' + id, httpOptions);
   }
 
-  updateDriver(id: any, data: any) {
-    return this.http.put(API_URL + 'driver/' + id, data, httpOptions);
+  updateDriver(id: string, data: Driver): Observable<Driver> {
+    return this.http.put<Driver>(API_URL + 'driver/' + id, data, httpOptions);
   }
 
-  createPackage(data: any) {
-    return this.http.post(API_URL + 'package', data, httpOptions);
+  // Package CRUD operations
+  createPackage(data: Package): Observable<Package> {
+    return this.http.post<Package>(API_URL + 'package', data, httpOptions);
   }
 
-  getPackages() {
-    return this.http.get(API_URL + 'package', httpOptions);
+  getPackages(): Observable<Package[]> {
+    return this.http.get<Package[]>(API_URL + 'package', httpOptions);
   }
 
-  deletePackage(id: any) {
-    return this.http.delete(API_URL + 'package/' + id, httpOptions);
+  deletePackage(id: string): Observable<void> {
+    return this.http.delete<void>(API_URL + 'package/' + id, httpOptions);
   }
 
-  updatePackage(id: any, data: any) {
-    return this.http.put(API_URL + 'package/' + id, data, httpOptions);
+  updatePackage(id: string, data: Package): Observable<Package> {
+    return this.http.put<Package>(API_URL + 'package/' + id, data, httpOptions);
   }
 }

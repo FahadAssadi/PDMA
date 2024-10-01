@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatabaseService } from '../../database/database.service';
 import type { Package } from '../../models/models';
+import type { Driver } from '../../models/models';
 
 @Component({
   selector: 'app-add-package',
@@ -11,7 +12,13 @@ import type { Package } from '../../models/models';
   styleUrl: './add-package.component.css'
 })
 export class AddPackageComponent {
-  constructor(private db: DatabaseService) {}
+  drivers: Driver[] = [];
+
+  constructor(private db: DatabaseService) {
+    this.db.getDrivers().subscribe((data) => {
+      this.drivers = data;
+    });
+  }
 
   package: Package = {
     packageTitle: '',
@@ -22,7 +29,7 @@ export class AddPackageComponent {
     packageIsAllocated: false
   };
 
-  addPackage() {
+  addPackage(): void {
     // Add package to database
     this.db.createPackage(this.package).subscribe((data) => {
       console.log(data);

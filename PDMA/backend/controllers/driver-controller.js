@@ -28,20 +28,9 @@ module.exports = {
     },
 
     deleteOne: async (req, res) => {
-        // Declare the response and package variables
-        let response;
-        let driver;
-
         // Check if the request is from the backend
-        if (req.body.isBackend) {
-            // Find the driver by mongodb ID and delete it
-            driver = await Driver.findById(req.query._id);
-            response = await Driver.deleteOne({ _id: req.query._id });
-        } else {
-            // Find the driver by driver ID and delete it
-            driver = await Driver.findOne({ driverId: req.query.driverId });
-            response = await Driver.deleteOne({ driverId: req.query.driverId });
-        }
+        let driver = await Driver.findById(req.params.id);
+        let response = await Driver.deleteOne({ _id: req.params.id });
 
         // Throw an error if the driver is not found
         if (!driver) {
@@ -59,7 +48,7 @@ module.exports = {
 
     updateOne: async (req, res) => {
         // Update the driver by mongodb ID
-        let response = await Driver.updateOne({ _id: req.body._id }, req.body, { new: true });
+        let response = await Driver.updateOne({ _id: req.params.id }, req.body, { new: true });
 
         // Throw an error if the driver is not found
         if (!response.matchedCount) {

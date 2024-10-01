@@ -36,16 +36,7 @@ router.get('/', async (req, res) => {
 // ----- DELETE PACKAGE -----
 router.delete('/:_id', async (req, res) => {
     try {
-        // Call the deleteOne function from the package controller
-        req.body.isBackend = true;
-
-        await packageController.deleteOne(req, res);
-
-        // Send the response back to the client
-        response = {
-            "acknowledged": true,
-            "deletedCount": 1
-        }
+        let response = await packageController.deleteOne(req, res);
 
         res.status(200).json(response);
     } catch (error) {
@@ -54,7 +45,7 @@ router.delete('/:_id', async (req, res) => {
 });
 
 // ----- UPDATE PACKAGE -----
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         // Call the updateOne function from the package controller
         let response = await packageController.updateOne(req, res);

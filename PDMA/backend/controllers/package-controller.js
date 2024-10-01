@@ -33,21 +33,10 @@ module.exports = {
     },
 
     deleteOne: async (req, res) => {
-        // Declare the response and package variables
-        let response;
-        let package;
-
-        // Check if the request is from the backend
-        if (req.body.isBackend) {
-            // Find the package by mongodb ID and delete it
-            package = await Package.findById(req.params._id);
-            response = await Package.deleteOne({ _id: req.params._id });
-        } else {
-            // Find the package by package ID and delete it
-            package = await Package.findOne({ packageId: req.query.packageId });
-            response = await Package.deleteOne({ packageId: req.query.packageId });
-        }
-
+        // Find the package by mongodb ID and delete it
+        let package = await Package.findById(req.params.id);
+        let response = await Package.deleteOne({ _id: req.params.id });
+        
         // Throw an error if the package is not found
         if (!package) {
             throw new Error('Package not found');
@@ -64,7 +53,7 @@ module.exports = {
 
     updateOne: async (req, res) => {
         // Update the package by mongodb ID
-        let response = await Package.updateOne({ _id: req.body._id }, req.body, { new: true });
+        let response = await Package.updateOne({ _id: req.params.id }, req.body, { new: true });
 
         // Throw an error if the package is not found
         if (!response.matchedCount) {

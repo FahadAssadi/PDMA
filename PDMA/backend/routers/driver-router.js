@@ -35,11 +35,8 @@ router.get('/', async (req, res) => {
 });
 
 // ----- DELETE DRIVER -----
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        // Call the deleteOne function from the driver controller
-        req.body.isBackend = true;
-
         let response = await driverController.deleteOne(req, res);
 
         // Send the response back to the client
@@ -50,7 +47,7 @@ router.delete('/', async (req, res) => {
 });
 
 // ----- UPDATE DRIVER -----
-router.put('/', async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
         // Call the updateOne function from the driver controller
         let response = await driverController.updateOne(req, res);

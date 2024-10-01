@@ -14,6 +14,7 @@ export class AddDriverComponent {
   constructor(private db: DatabaseService) {}
 
   driver: Driver = {
+    driverId: '',
     driverName: '',
     driverDepartment: '',
     driverLicense: '',
@@ -30,6 +31,7 @@ export class AddDriverComponent {
 
     // Reset form
     this.driver = {
+      driverId: '',
       driverName: '',
       driverDepartment: '',
       driverLicense: '',

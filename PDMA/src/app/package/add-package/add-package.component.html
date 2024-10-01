@@ -28,8 +28,12 @@
 
         <!-- Driver ID Field -->
         <div class="mb-3">
-            <label for="packageDriverId">Driver ID</label>
-            <input type="text" class="form-control" id="driverId" name="driverId" [(ngModel)]="package.driverId" required>
+            <label for="driverId" class="form-label">Driver ID</label>
+            <select class="form-select" id="driverId" name="driverId">
+                @for(driver of drivers; track $index) {
+                    <option value="{{driver.driverId}}">{{driver.driverName}}</option>
+                }
+            </select>
         </div>
 
         <!-- Is Allocated Switch -->
