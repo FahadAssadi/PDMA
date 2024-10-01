@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DatabaseService } from '../../database/database.service';
+import { DatabaseService } from '../../shared/services/database/database.service';
 import type { Driver } from '../../models/models.d.ts';
 
 @Component({
@@ -21,7 +21,7 @@ export class AddDriverComponent {
     driverIsActive: false
   };
 
-  addDriver() {
+  addDriver(): void {
     console.log(this.driver);
 
     // Add driver to database

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DatabaseService } from '../../database/database.service';
+import { DatabaseService } from '../../shared/services/database/database.service';
 import type { Package } from '../../models/models';
 import type { Driver } from '../../models/models';
 

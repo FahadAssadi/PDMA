@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Driver } from '../models/models';
-import { Package } from '../models/models';
+import { Driver } from '../../../models/models';
+import { Package } from '../../../models/models';
 
 const API_URL = 'http://localhost:8080/api/';
 
