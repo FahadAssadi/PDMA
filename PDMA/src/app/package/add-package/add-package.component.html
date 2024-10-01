@@ -1,1 +1,46 @@
-<p>add-package works!</p>
+<div class="container">
+    <div class="form-container">
+        <h3> New Package </h3>
+        
+        <!-- Title Field -->
+        <div class="mb-3">
+            <label for="packageTitle">Title</label>
+            <input type="text" class="form-control" id="packageTitle" name="packageTitle" [(ngModel)]="package.packageTitle" required>
+        </div>
+
+        <!-- Description Field -->
+        <div class="mb-3">
+            <label for="packageDescription">Description</label>
+            <input type="text" class="form-control" id="packageDescription" name="packageDescription" [(ngModel)]="package.packageDescription" required>
+        </div>
+
+        <!-- Destination Field -->
+        <div class="mb-3">
+            <label for="packageDestination">Destination</label>
+            <input type="text" class="form-control" id="packageDestination" name="packageDestination" [(ngModel)]="package.packageDestination" required>
+        </div>
+
+        <!-- Weight Field -->
+        <div class="mb-3">
+            <label for="packageWeight">Weight</label>
+            <input type="number" class="form-control" id="packageWeight" name="packageWeight" [(ngModel)]="package.packageWeight" required>
+        </div>
+
+        <!-- Driver ID Field -->
+        <div class="mb-3">
+            <label for="packageDriverId">Driver ID</label>
+            <input type="text" class="form-control" id="driverId" name="driverId" [(ngModel)]="package.driverId" required>
+        </div>
+
+        <!-- Is Allocated Switch -->
+        <div class="mb-3">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="packageIsAllocated" name="packageIsAllocated" [(ngModel)]="package.packageIsAllocated">
+                <label class="form-check-label" for="packageIsAllocated">Allocated</label>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button (click)="addPackage()" type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div>
+</div>

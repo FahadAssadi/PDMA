@@ -29,7 +29,7 @@ const driverSchema = new mongoose.Schema({
             message: "Driver Department must be between 3 and 20 characters long and contain only letters and numbers." 
         }
     },
-    driverLicence: { 
+    driverLicense: { 
         type: String, 
         required: true, 
         validate: { 

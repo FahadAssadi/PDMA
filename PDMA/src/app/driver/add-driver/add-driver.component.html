@@ -4,14 +4,14 @@
         
         <!-- Name Field -->
         <div class="mb-3">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" [(ngModel)]="driver.name" required>
+            <label for="driverName">Name</label>
+            <input type="text" class="form-control" id="driverName" name="driverName" [(ngModel)]="driver.driverName" required>
         </div>
 
         <!-- Department Field -->
         <div class="mb-3">
-            <label for="department">Department</label>
-            <select class="form-control" id="department" name="department" [(ngModel)]="driver.department" required>
+            <label for="driverDepartment">Department</label>
+            <select class="form-control" id="driverDepartment" name="driverDepartment" [(ngModel)]="driver.driverDepartment" required>
                 <option value="Food">Food</option>
                 <option value="Electronics">Electronics</option>
                 <option value="Furniture">Furniture</option>
@@ -20,15 +20,15 @@
 
         <!-- License Field -->
         <div class="mb-3">
-            <label for="license">License</label>
-            <input type="text" class="form-control" id="license" name="license" [(ngModel)]="driver.license" required>
+            <label for="driverLicense">License</label>
+            <input type="text" class="form-control" id="driverLicense" name="driverLicense" [(ngModel)]="driver.driverLicense" required>
         </div>
 
         <!-- Is Active Switch -->
         <div class="mb-3">
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="isActive" name="isActive" [(ngModel)]="driver.isActive">
-                <label class="form-check-label" for="isActive">Active</label>
+                <input class="form-check-input" type="checkbox" id="driverIsActive" name="driverIsActive" [(ngModel)]="driver.driverIsActive">
+                <label class="form-check-label" for="driverIsActive">Active</label>
             </div>
         </div>
 
@@ -36,4 +36,3 @@
         <button (click)="addDriver()" type="submit" class="btn btn-primary btn-block">Submit</button>
     </div>
 </div>
-  

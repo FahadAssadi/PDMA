@@ -14,26 +14,26 @@ export class AddDriverComponent {
   constructor(private db: DatabaseService) {}
 
   driver: Driver = {
-    name: '',
-    department: '',
-    license: '',
-    isActive: false
+    driverName: '',
+    driverDepartment: '',
+    driverLicense: '',
+    driverIsActive: false
   };
 
   addDriver() {
     console.log(this.driver);
 
     // Add driver to database
-    // this.db.createDriver(this.driver).subscribe((data) => {
-    //   console.log(data);
-    // });
+    this.db.createDriver(this.driver).subscribe((data) => {
+      console.log(data);
+    });
 
     // Reset form
     this.driver = {
-      name: '',
-      department: '',
-      license: '',
-      isActive: false
+      driverName: '',
+      driverDepartment: '',
+      driverLicense: '',
+      driverIsActive: false
     };
   }
 }

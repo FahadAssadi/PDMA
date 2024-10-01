@@ -29,4 +29,7 @@ app.use(session({
 
 app.use(express.static(path.join(__dirname, '../dist/pdma/browser')));
 
+// Setup the routes
+app.use('/api', require('./routers/router'));
+
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

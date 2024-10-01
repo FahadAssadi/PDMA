@@ -4,16 +4,17 @@ export type UserDetails = {
 }
 
 export type Driver = {
-    name: string;
-    department: string;
-    license: string;
-    isActive: boolean;
+    driverName: string;
+    driverDepartment: string;
+    driverLicense: string;
+    driverIsActive: boolean;
 }
 
 export type Package = {
-    title: string;
-    description: string;
-    weight: number;
+    packageTitle: string;
+    packageDescription: string;
+    packageDestination: string;
+    packageWeight: number;
     driverId: string;
-    isAllocated: boolean;
+    packageIsAllocated: boolean;
 }

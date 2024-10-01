@@ -8,7 +8,7 @@ module.exports = {
         let driverDetails = {
             driverName: req.body.driverName,
             driverDepartment: req.body.driverDepartment,
-            driverLicence: req.body.driverLicence,
+            driverLicense: req.body.driverLicense,
             driverIsActive: req.body.driverIsActive,
         };
 
