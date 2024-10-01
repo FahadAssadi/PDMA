@@ -18,8 +18,27 @@
                     @if (dividerIndices.includes(i)) {
                         <div class="vr mx-2"></div>
                     }
+
+                    
                 }
 
+                <!-- Profile Dropdown -->
+                <div class="profile-container">
+                    <!-- Profile Icon -->
+                    <button (click)="isDropdownOpen = !isDropdownOpen" class="profile-btn">
+                      <img src="assets/profile-icon.png" alt="Profile Icon" class="profile-icon">
+                    </button>
+                  
+                    <!-- Dropdown Menu -->
+                    @if (isDropdownOpen) {
+                        <div class="dropdown-menu">
+                          <a routerLink="/login">Login</a>
+                          <a routerLink="/register">Register</a>
+                        </div>
+                    }
+                </div>
+                
+                
             </div>
         </nav>
     </div>
