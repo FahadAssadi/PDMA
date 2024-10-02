@@ -14,13 +14,16 @@ import type { Driver } from '../../models/models';
 export class AddPackageComponent {
   drivers: Driver[] = [];
 
-  constructor(private db: DatabaseService) {
-    this.db.getDrivers().subscribe((data) => {
-      this.drivers = data;
+  constructor(private db: DatabaseService) {}
+
+  ngOnInit(): void {
+    this.db.getDrivers().subscribe((drivers) => {
+      this.drivers = drivers;
     });
   }
 
   package: Package = {
+    _id: '',
     packageTitle: '',
     packageDescription: '',
     packageDestination: '',
@@ -37,6 +40,7 @@ export class AddPackageComponent {
 
     // Reset form
     this.package = {
+      _id: '',
       packageTitle: '',
       packageDescription: '',
       packageDestination: '',

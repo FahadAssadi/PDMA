@@ -17,7 +17,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class DatabaseService {
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {}
 
   // Driver CRUD operations
   createDriver(data: Driver): Observable<Driver> {

@@ -12,9 +12,11 @@ import type { Driver } from '../../models/models.d.ts';
 export class ListDriversComponent {
   drivers: Driver[] = [];
 
-  constructor(private db: DatabaseService) {
-    this.db.getDrivers().subscribe((data) => {
-      this.drivers = data;
+  constructor(private db: DatabaseService) {}
+
+  ngOnInit(): void {
+    this.db.getDrivers().subscribe((drivers) => {
+      this.drivers = drivers;
     });
   }
 

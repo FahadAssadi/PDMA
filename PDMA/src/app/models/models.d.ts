@@ -4,6 +4,7 @@ export type UserDetails = {
 }
 
 export type Driver = {
+    _id: string;
     driverId: string;
     driverName: string;
     driverDepartment: string;
@@ -12,6 +13,7 @@ export type Driver = {
 }
 
 export type Package = {
+    _id: string;
     packageTitle: string;
     packageDescription: string;
     packageDestination: string;
