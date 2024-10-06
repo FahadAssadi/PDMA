@@ -26,7 +26,7 @@ export class DeleteDriverComponent {
   deleteDriver(driverId: string): void {
     // Delete driver from database
     this.db.deleteDriver(driverId).subscribe((data) => {
-      this.drivers = this.drivers.filter((driver) => driver.driverId !== driverId);
+      this.drivers = this.drivers.filter((driver) => driver._id !== driverId);
     });
   }
 }

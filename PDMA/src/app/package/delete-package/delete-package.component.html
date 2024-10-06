@@ -1,1 +1,30 @@
-<p>delete-package works!</p>
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Weight</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Is Allocated</th>
+                <th scope="col">Created At</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(package of packages; track $index) {
+            <tr>
+                <td>{{ package.packageId }}</td>
+                <td>{{ package.packageTitle }}</td>
+                <td>{{ package.packageWeight | kgToG }}</td>
+                <td>{{ package.packageDestination }}</td>
+                <td>{{ package.packageIsAllocated }}</td>
+                <td>{{ package.packageCreatedAt }}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deletePackage(package._id)">X</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

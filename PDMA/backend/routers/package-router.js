@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
 });
 
 // ----- DELETE PACKAGE -----
-router.delete('/:_id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         let response = await packageController.deleteOne(req, res);
 

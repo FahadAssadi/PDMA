@@ -29,9 +29,9 @@
         <!-- Driver ID Field -->
         <div class="mb-3">
             <label for="driverId" class="form-label">Driver ID</label>
-            <select class="form-select" id="driverId" name="driverId">
+            <select class="form-select" id="driverId" name="driverId" [(ngModel)]="package.driverId">
                 @for(driver of drivers; track $index) {
-                    <option value="{{driver.driverId}}">{{driver.driverName}}</option>
+                    <option value="{{ driver._id }}">{{ driver.driverName }}</option>
                 }
             </select>
         </div>

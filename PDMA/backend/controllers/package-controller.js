@@ -53,7 +53,7 @@ module.exports = {
 
     updateOne: async (req, res) => {
         // Update the package by mongodb ID
-        let response = await Package.updateOne({ _id: req.params.id }, req.body, { new: true });
+        let response = await Package.updateOne({ packageId: req.params.id }, req.body, { new: true });
 
         // Throw an error if the package is not found
         if (!response.matchedCount) {

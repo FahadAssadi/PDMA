@@ -17,10 +17,14 @@ export type DriverUpdateDetails = Pick<Driver, 'driverId' | 'driverDepartment' |
 
 export type Package = {
     _id: string;
+    packageId: string;
     packageTitle: string;
     packageDescription: string;
     packageDestination: string;
     packageWeight: number;
     driverId: string;
     packageIsAllocated: boolean;
+    packageCreatedAt: string;
 }
+
+export type PackageUpdateDetails = Pick<Package, 'packageId' | 'packageDestination'>;

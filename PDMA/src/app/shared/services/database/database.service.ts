@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import type { Driver } from '../../../models/models';
 import type { DriverUpdateDetails } from '../../../models/models';
 import type { Package } from '../../../models/models';
+import type { PackageUpdateDetails } from '../../../models/models';
 
 const API_URL: string = 'http://localhost:8080/api/';
 
@@ -51,7 +52,7 @@ export class DatabaseService {
     return this.http.delete<void>(API_URL + 'package/' + id, httpOptions);
   }
 
-  updatePackage(id: string, data: Package): Observable<Package> {
-    return this.http.put<Package>(API_URL + 'package/' + id, data, httpOptions);
+  updatePackage(data: PackageUpdateDetails): Observable<Package> {
+    return this.http.put<Package>(API_URL + 'package/' + data.packageId, data, httpOptions);
   }
 }

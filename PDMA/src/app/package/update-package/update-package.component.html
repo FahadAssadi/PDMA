@@ -1,1 +1,20 @@
-<p>update-package works!</p>
+<div class="container">
+    <div class="form-container">
+        <h3> Update Package </h3>
+        
+        <!-- Package ID Field -->
+        <div class="mb-3">
+            <label for="packageId">Package ID</label>
+            <input type="text" class="form-control" id="packageId" name="packageId" [(ngModel)]="packageDetails.packageId" required>
+        </div>
+
+        <!-- Package Destination Field -->
+        <div class="mb-3">
+            <label for="packageDestination">Package Destination</label>
+            <input type="text" class="form-control" id="packageDestination" name="packageDestination" [(ngModel)]="packageDetails.packageDestination" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button (click)="updatePackage()" type="submit" class="btn btn-primary btn-block">Update</button>
+    </div>
+</div>

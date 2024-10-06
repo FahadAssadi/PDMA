@@ -13,17 +13,17 @@
         </thead>
         <tbody>
             @for(driver of drivers; track $index) {
-                <tr>
-                    <td>{{ driver.driverId }}</td>
-                    <td>{{ driver.driverName | stringToUpper }}</td>
-                    <td>{{ driver.driverDepartment }}</td>
-                    <td>{{ driver.driverLicense }}</td>
-                    <td>{{ driver.driverIsActive }}</td>
-                    <td>{{ driver.driverCreatedAt }}</td>
-                    <td>
-                        <button class="btn btn-danger" (click)="deleteDriver(driver.driverId)">X</button>
-                    </td>
-                </tr>
+            <tr>
+                <td>{{ driver.driverId }}</td>
+                <td>{{ driver.driverName | stringToUpper }}</td>
+                <td>{{ driver.driverDepartment }}</td>
+                <td>{{ driver.driverLicense }}</td>
+                <td>{{ driver.driverIsActive }}</td>
+                <td>{{ driver.driverCreatedAt }}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteDriver(driver._id)">X</button>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
