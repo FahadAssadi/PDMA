@@ -11,8 +11,8 @@ import { routes } from '../../app.routes';
 })
 export class HeaderComponent {
   // ignore the first two routes and the last route
-  navLinks: Routes = routes.slice(2, routes.length - 1);
+  navLinks: Routes = routes.slice(0, routes.length - 2);
 
   // Define indices where we want to insert dividers
-  dividerIndices: number[] = [3, 7, 10];
+  dividerIndices: number[] = [0, 4, 8, 11];
 }

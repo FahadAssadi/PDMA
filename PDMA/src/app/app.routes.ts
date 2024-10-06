@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './shared/services/guard/auth.guard';
 
 import { HomeComponent } from './core/home/home.component';
 import { InvalidDataComponent } from './core/invalid-data/invalid-data.component';
@@ -24,26 +25,26 @@ import { Text2SpeechComponent } from './cloud-services/text-2-speech/text-2-spee
 import { GenAiComponent } from './cloud-services/gen-ai/gen-ai.component';
 
 export const routes: Routes = [
-    {title: 'Home', path: '', component: HomeComponent},
-    {title: 'Invalid Data', path: 'invalid-data', component: InvalidDataComponent},
+    {title: 'Home', path: '', component: HomeComponent, canActivate: [authGuard]},
     
-    {title: 'Add Driver', path: 'add-driver', component: AddDriverComponent},
-    {title: 'List Drivers', path: 'list-drivers', component: ListDriversComponent},
-    {title: 'Delete Driver', path: 'delete-driver', component: DeleteDriverComponent},
-    {title: 'Update Driver', path: 'update-driver', component: UpdateDriverComponent},
+    {title: 'Add Driver', path: 'add-driver', component: AddDriverComponent, canActivate: [authGuard]},
+    {title: 'List Drivers', path: 'list-drivers', component: ListDriversComponent, canActivate: [authGuard]},
+    {title: 'Delete Driver', path: 'delete-driver', component: DeleteDriverComponent, canActivate: [authGuard]},
+    {title: 'Update Driver', path: 'update-driver', component: UpdateDriverComponent, canActivate: [authGuard]},
     
-    {title: 'Add Package', path: 'add-package', component: AddPackageComponent},
-    {title: 'List Packages', path: 'list-packages', component: ListPackagesComponent},
-    {title: 'Delete Package', path: 'delete-package', component: DeletePackageComponent},
-    {title: 'Update Package', path: 'update-package', component: UpdatePackageComponent},
+    {title: 'Add Package', path: 'add-package', component: AddPackageComponent, canActivate: [authGuard]},
+    {title: 'List Packages', path: 'list-packages', component: ListPackagesComponent, canActivate: [authGuard]},
+    {title: 'Delete Package', path: 'delete-package', component: DeletePackageComponent, canActivate: [authGuard]},
+    {title: 'Update Package', path: 'update-package', component: UpdatePackageComponent, canActivate: [authGuard]},
     
-    {title: 'Translate', path: 'translate', component: TranslateComponent},
-    {title: 'Text 2 Speech', path: 'text-2-speech', component: Text2SpeechComponent},
-    {title: 'Generative AI', path: 'gen-ai', component: GenAiComponent},
+    {title: 'Translate', path: 'translate', component: TranslateComponent, canActivate: [authGuard]},
+    {title: 'Text 2 Speech', path: 'text-2-speech', component: Text2SpeechComponent, canActivate: [authGuard]},
+    {title: 'Generative AI', path: 'gen-ai', component: GenAiComponent, canActivate: [authGuard]},
     
-    {title: 'Statistics', path: 'statistics', component: StatsComponent},
+    {title: 'Statistics', path: 'statistics', component: StatsComponent, canActivate: [authGuard]},
     {title: 'Login', path: 'login', component: LoginComponent},
     {title: 'Register', path: 'register', component: RegisterComponent},
     
-    {title: '404', path: '**', component: PageNotFoundComponent},
+    {title: 'Invalid Data', path: 'invalid-data', component: InvalidDataComponent},
+    {title: '404', path: '**', component: PageNotFoundComponent}
 ];

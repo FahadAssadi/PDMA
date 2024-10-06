@@ -69,14 +69,11 @@ export class DatabaseService {
 
   // Login operations
   register(data: UserDetails): Observable<void> {
-    return this.http.post<void>(API_URL + 'register', data, httpOptions);
+    return this.http.post<void>(API_URL + 'auth/register', data, httpOptions);
   }
 
   login(data: UserDetails): Observable<void> {
-    return this.http.post<void>(API_URL + 'login', data, httpOptions);
+    return this.http.post<void>(API_URL + 'auth/login', data, httpOptions);
   }
 
-  logout(): Observable<void> {
-    return this.http.post<void>(API_URL + 'logout', httpOptions);
-  }
 }
