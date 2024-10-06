@@ -24,11 +24,15 @@ export class LoginComponent {
     this.auth.login(this.userDetails)
       .then(() => {
         console.log('Login successful');
-        this.router.navigate(['/']);  // Navigate to home on success
+        
+        // Navigate to home on successful login
+        this.router.navigate(['/']);  
       })
       .catch((err) => {
         console.error('Login failed:', err);
-        this.router.navigate(['/invalid-data']);  // Navigate to error page on failure
+
+        // Navigate to error page on failure
+        this.router.navigate(['/invalid-data']);  
       });
   }
 }

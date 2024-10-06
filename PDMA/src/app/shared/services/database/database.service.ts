@@ -17,14 +17,31 @@ const httpOptions = {
   })
 };
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class DatabaseService {
   constructor(private http:HttpClient) {}
 
-  // Driver CRUD operations
+  // -------------------- USER AUTHENTICATION OPERATIONS --------------------
+  register(data: UserDetails): Observable<void> {
+    return this.http.post<void>(API_URL + 'auth/register', data, httpOptions);
+  }
+
+  login(data: UserDetails): Observable<void> {
+    return this.http.post<void>(API_URL + 'auth/login', data, httpOptions);
+  }
+
+  // -------------------- STATISTICS OPERATIONS --------------------
+  getStatistics(): Observable<Statistics> {
+    return this.http.get<Statistics>(API_URL + 'stats', httpOptions);
+  }
+
+  resetStatistics(): Observable<void> {
+    return this.http.delete<void>(API_URL + 'stats', httpOptions);
+  }
+
+  // -------------------- DRIVER CRUD OPERATIONS --------------------
   createDriver(data: Driver): Observable<Driver> {
     return this.http.post<Driver>(API_URL + 'driver', data, httpOptions);
   }
@@ -41,7 +58,7 @@ export class DatabaseService {
     return this.http.put<Driver>(API_URL + 'driver/' + data.driverId, data, httpOptions);
   }
 
-  // Package CRUD operations
+  // -------------------- PACKAGE CRUD OPERATIONS --------------------
   createPackage(data: Package): Observable<Package> {
     return this.http.post<Package>(API_URL + 'package', data, httpOptions);
   }
@@ -56,24 +73,6 @@ export class DatabaseService {
 
   updatePackage(data: PackageUpdateDetails): Observable<Package> {
     return this.http.put<Package>(API_URL + 'package/' + data.packageId, data, httpOptions);
-  }
-
-  // Statistics operations
-  getStatistics(): Observable<Statistics> {
-    return this.http.get<Statistics>(API_URL + 'stats', httpOptions);
-  }
-
-  resetStatistics(): Observable<void> {
-    return this.http.delete<void>(API_URL + 'stats', httpOptions);
-  }
-
-  // Login operations
-  register(data: UserDetails): Observable<void> {
-    return this.http.post<void>(API_URL + 'auth/register', data, httpOptions);
-  }
-
-  login(data: UserDetails): Observable<void> {
-    return this.http.post<void>(API_URL + 'auth/login', data, httpOptions);
   }
 
 }

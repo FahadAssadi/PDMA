@@ -1,1 +1,29 @@
-<p>register works!</p>
+<div class="container">
+    <div class="form-container">
+        <h2>Register</h2>
+
+        <!-- Username Field -->
+        <div class="mb-3">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" [(ngModel)]="userDetails.username" required>
+        </div>
+
+        <!-- Password Field -->
+        <div class="mb-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userDetails.password" required>
+        </div>
+
+        <!-- Confirm Password Field -->
+        <div class="mb-3">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmPassword" required>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn btn-primary btn-block" (click)="register()">Register</button>
+
+        <!-- Login Button -->
+        <a class="btn btn-secondary float-end" routerLink="/login">Login</a>
+    </div>
+</div>
