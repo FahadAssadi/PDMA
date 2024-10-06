@@ -1,1 +1,43 @@
-<p>home works!</p>
+<div class="container mt-5">
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to FIT2095 Wish.com</h1>
+    <p class="lead">Your one-stop shop for all your needs, competing with Amazon, Temu, Wish, and other online shopping platforms.</p>
+    <hr class="my-4">
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <h2>Drivers</h2>
+      <p>Manage your drivers efficiently. Add, update, and delete driver information with ease.</p>
+      <a class="btn btn-outline-primary" [routerLink]="['/list-drivers']" role="button">View Drivers</a>
+    </div>
+    <div class="col-md-4">
+      <h2>Packages</h2>
+      <p>Keep track of all your packages. Add, update, and delete package information seamlessly.</p>
+      <a class="btn btn-outline-primary" [routerLink]="['/list-packages']" role="button">View Packages</a>
+    </div>
+    <div class="col-md-4">
+      <h2>Statistics</h2>
+      <p>Get insights into your operations with detailed statistics and reports.</p>
+      <a class="btn btn-outline-primary" [routerLink]="['/statistics']" role="button">View Statistics</a>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <h2>Translate</h2>
+      <p>Use our translation services to communicate effectively in multiple languages.</p>
+      <a class="btn btn-outline-primary" [routerLink]="['/translate']" role="button">Translate Now</a>
+    </div>
+    <div class="col-md-4">
+      <h2>Text to Speech</h2>
+      <p>Convert text to speech for better accessibility and user experience.</p>
+      <a class="btn btn-outline-primary" [routerLink]="['/text-2-speech']" role="button">Convert Text</a>
+    </div>
+    <div class="col-md-4">
+      <h2>Generative AI</h2>
+      <p>Leverage our generative AI services to easily calculate how far a package is from you.</p>
+      <a class="btn btn-outline-primary" [routerLink]="['/gen-ai']" role="button">Explore AI</a>
+    </div>
+  </div>
+</div>
