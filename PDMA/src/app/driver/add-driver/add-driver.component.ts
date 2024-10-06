@@ -33,18 +33,7 @@ export class AddDriverComponent {
         this.router.navigate(['/invalid-data']);
       }
     });
-
-    // Reset form
-    this.driver = {
-      _id: '',
-      driverId: '',
-      driverName: '',
-      driverDepartment: '',
-      driverLicense: '',
-      driverIsActive: false,
-      driverCreatedAt: ''
-    };
-
+    
     this.router.navigate(['/list-drivers']);
   }
 }

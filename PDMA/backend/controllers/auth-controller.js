@@ -25,9 +25,6 @@ module.exports = {
             throw new Error("Incorrect password");
         }
 
-        // Set the user session
-        req.session.user = { username };
-
         return {
             status: "Login successful"
         };
@@ -54,7 +51,6 @@ module.exports = {
             password: password
         });
 
-        // Set the user session
         return {
             status: "Registration successful"
         };

@@ -1,5 +1,4 @@
 const express = require("express");
-const session = require('express-session');
 const path = require('path');
 const morgan = require('morgan');
 
@@ -13,19 +12,11 @@ require('./config/firebase-setup');
  * @constant {Object}
  */
 const app = express();
-
 const PORT = 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
-
-app.use(session({
-    secret: '33328366',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }
-}));
 
 app.use(express.static(path.join(__dirname, '../dist/pdma/browser')));
 

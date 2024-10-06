@@ -7,6 +7,7 @@ import type { DriverUpdateDetails } from '../../../models/models';
 import type { Package } from '../../../models/models';
 import type { PackageUpdateDetails } from '../../../models/models';
 import type { Statistics } from '../../../models/models';
+import type { UserDetails } from '../../../models/models';
 
 const API_URL: string = 'http://localhost:8080/api/';
 
@@ -64,5 +65,18 @@ export class DatabaseService {
 
   resetStatistics(): Observable<void> {
     return this.http.delete<void>(API_URL + 'stats', httpOptions);
+  }
+
+  // Login operations
+  register(data: UserDetails): Observable<void> {
+    return this.http.post<void>(API_URL + 'register', data, httpOptions);
+  }
+
+  login(data: UserDetails): Observable<void> {
+    return this.http.post<void>(API_URL + 'login', data, httpOptions);
+  }
+
+  logout(): Observable<void> {
+    return this.http.post<void>(API_URL + 'logout', httpOptions);
   }
 }

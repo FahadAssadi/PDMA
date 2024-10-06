@@ -14,5 +14,5 @@ export class HeaderComponent {
   navLinks: Routes = routes.slice(2, routes.length - 1);
 
   // Define indices where we want to insert dividers
-  dividerIndices: number[] = [3, 7];
+  dividerIndices: number[] = [3, 7, 10];
 }

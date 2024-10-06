@@ -36,13 +36,12 @@ export const routes: Routes = [
     {title: 'List Packages', path: 'list-packages', component: ListPackagesComponent},
     {title: 'Delete Package', path: 'delete-package', component: DeletePackageComponent},
     {title: 'Update Package', path: 'update-package', component: UpdatePackageComponent},
-
-    {title: 'Statistics', path: 'statistics', component: StatsComponent},
     
     {title: 'Translate', path: 'translate', component: TranslateComponent},
     {title: 'Text 2 Speech', path: 'text-2-speech', component: Text2SpeechComponent},
     {title: 'Generative AI', path: 'gen-ai', component: GenAiComponent},
-
+    
+    {title: 'Statistics', path: 'statistics', component: StatsComponent},
     {title: 'Login', path: 'login', component: LoginComponent},
     {title: 'Register', path: 'register', component: RegisterComponent},
     
