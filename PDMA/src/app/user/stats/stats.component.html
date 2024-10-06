@@ -1,1 +1,43 @@
-<p>stats works!</p>
+<div class="container mt-5">
+    <div class="card" style="width: 50%; margin: auto;">
+        <div class="card-header">
+            <h2 class="mb-0">Statistics</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Operation</th>
+                        <th scope="col">Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Drivers</td>
+                        <td>{{ statistics?.driverCount }}</td>
+                    </tr>
+                    <tr>
+                        <td>Packages</td>
+                        <td>{{ statistics?.packageCount }}</td>
+                    </tr>
+                    <tr>
+                        <td>Insert</td>
+                        <td>{{ statistics?.insertCount }}</td>
+                    </tr>
+                    <tr>
+                        <td>Retrieve</td>
+                        <td>{{ statistics?.retrieveCount }}</td>
+                    </tr>
+                    <tr>
+                        <td>Update</td>
+                        <td>{{ statistics?.updateCount }}</td>
+                    </tr>
+                    <tr>
+                        <td>Delete</td>
+                        <td>{{ statistics?.deleteCount }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

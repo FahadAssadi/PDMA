@@ -6,6 +6,7 @@ import type { Driver } from '../../../models/models';
 import type { DriverUpdateDetails } from '../../../models/models';
 import type { Package } from '../../../models/models';
 import type { PackageUpdateDetails } from '../../../models/models';
+import type { Statistics } from '../../../models/models';
 
 const API_URL: string = 'http://localhost:8080/api/';
 
@@ -54,5 +55,14 @@ export class DatabaseService {
 
   updatePackage(data: PackageUpdateDetails): Observable<Package> {
     return this.http.put<Package>(API_URL + 'package/' + data.packageId, data, httpOptions);
+  }
+
+  // Statistics operations
+  getStatistics(): Observable<Statistics> {
+    return this.http.get<Statistics>(API_URL + 'stats', httpOptions);
+  }
+
+  resetStatistics(): Observable<void> {
+    return this.http.delete<void>(API_URL + 'stats', httpOptions);
   }
 }

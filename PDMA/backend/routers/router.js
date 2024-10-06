@@ -1,22 +1,15 @@
-const authBackendRouter = require('./auth-router');
-const driverBackendRouter = require('./driver-router');
-const packageBackendRouter = require('./package-router');
+const authRouter = require('./auth-router');
+const statsRouter = require('./stats-router');
+const driverRouter = require('./driver-router');
+const packageRouter = require('./package-router');
 
 const express = require('express');
 const router = express.Router();
 
-// Middleware to authenticate
-function backendAuthenticate(req, res, next) {
-    if (req.session && req.session.user) {
-        next();
-    } else {
-        res.status(401).json({ status: 'Unauthorized, Please Login' });
-    }
-}
-
 // BACKEND ROUTES
-router.use('/auth', authBackendRouter);
-router.use('/driver', driverBackendRouter);
-router.use('/package', packageBackendRouter);
+router.use('/auth', authRouter);
+router.use('/stats', statsRouter);
+router.use('/driver', driverRouter);
+router.use('/package', packageRouter);
 
 module.exports = router;

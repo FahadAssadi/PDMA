@@ -3,6 +3,15 @@ export type UserDetails = {
     password: string;
 }
 
+export type Statistics = {
+    driverCount: number;
+    packageCount: number;
+    insertCount: number;
+    retrieveCount: number;
+    updateCount: number;
+    deleteCount: number;
+}
+
 export type Driver = {
     _id: string;
     driverId: string;
