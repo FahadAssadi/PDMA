@@ -23,7 +23,7 @@ export class RegisterComponent {
 
   register(): void {
     // Check if passwords match
-    if (this.userDetails.password !== this.confirmPassword) {
+    if (this.userDetails.password !== this.confirmPassword || this.userDetails.password === '') {
       console.error('Passwords do not match');
       this.router.navigate(['/invalid-data']);
       return;

@@ -1,26 +1,45 @@
-<header>
-    <!-- Logo -->
-    <div class="container-fluid d-flex justify-content-center mb-3">
-        <a [routerLink]="['']">
-            <img src="/assets/logo.png" alt="Logo" class="img-fluid mb-3">
-        </a>
-    </div>
+<!-- Logo -->
+<div class="container-fluid d-flex justify-content-center mb-3">
+    <a [routerLink]="['']">
+        <img src="/assets/logo.png" alt="Logo" class="img-fluid mb-3">
+    </a>
+</div>
 
-    <!-- Navbar -->
-    <div class="container-fluid d-flex justify-content-center mb-3">
-        <nav class="navbar navbar-expand-lg justify-content-center navbar-light bg-light">
-            <div class="navbar-nav flex-wrap justify-content-center">
-                <!-- Loop through the navLinks array and display the links -->
-                @for (link of navLinks; track $index; let i = $index) {
-                    <a class="nav-item nav-link" [routerLink]="link.path">{{ link.title }}</a>
-                    
-                    <!-- Insert divider if the index matches any of the values in dividerIndices -->
-                    @if (dividerIndices.includes(i)) {
-                        <div class="vr mx-2"></div>
-                    }
-                }
-            </div>
-        </nav>
-    </div>
+<!-- Navbar -->
+<div class="container-fluid d-flex justify-content-center mb-3">
+    <nav class="navbar navbar-expand-lg justify-content-center navbar-light bg-light">
+        <div class="navbar-nav flex-wrap justify-content-center">
+            <!-- Home link -->
+            <a class="nav-item nav-link" [routerLink]="navLinks.home.path">{{ navLinks.home.title }}</a>
+            
+            <div class="vr mx-2"></div>
+
+            <!-- Driver links -->
+            @for(route of navLinks.driver; track $index) {
+                <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
+            }
+
+            <div class="vr mx-2"></div>
+
+            <!-- Package links -->
+            @for(route of navLinks.package; track $index) {
+                <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
+            }
+
+            <div class="vr mx-2"></div>
+
+            <!-- Cloud links -->
+            @for(route of navLinks.cloud; track $index) {
+                <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
+            }
+
+            <div class="vr mx-2"></div>
+
+            <!-- User links -->
+            @for(route of navLinks.user; track $index) {
+                <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
+            }
+        </div>
+    </nav>
+</div>
         
-</header>
