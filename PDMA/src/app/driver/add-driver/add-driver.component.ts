@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatabaseService } from '../../shared/services/database/database.service';
+import { Router } from '@angular/router';
+
 import type { Driver } from '../../models/models.d.ts';
 
 @Component({
@@ -11,7 +13,7 @@ import type { Driver } from '../../models/models.d.ts';
   styleUrl: './add-driver.component.css'
 })
 export class AddDriverComponent {
-  constructor(private db: DatabaseService) {}
+  constructor(private db: DatabaseService, private router: Router) {}
 
   driver: Driver = {
     _id: '',
@@ -19,15 +21,17 @@ export class AddDriverComponent {
     driverName: '',
     driverDepartment: '',
     driverLicense: '',
-    driverIsActive: false
+    driverIsActive: false,
+    driverCreatedAt: ''
   };
 
   addDriver(): void {
-    console.log(this.driver);
-
     // Add driver to database
-    this.db.createDriver(this.driver).subscribe((data) => {
-      console.log(data);
+    this.db.createDriver(this.driver).subscribe({
+      error: (err) => {
+        console.log("Error adding driver", err);
+        this.router.navigate(['/invalid-data']);
+      }
     });
 
     // Reset form
@@ -37,7 +41,10 @@ export class AddDriverComponent {
       driverName: '',
       driverDepartment: '',
       driverLicense: '',
-      driverIsActive: false
+      driverIsActive: false,
+      driverCreatedAt: ''
     };
+
+    this.router.navigate(['/list-drivers']);
   }
 }

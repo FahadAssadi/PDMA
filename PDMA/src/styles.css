@@ -22,3 +22,9 @@ app-footer {
     border: 1px solid #ddd;
     border-radius: 8px;
 }
+
+.table-container {
+    padding: 15px;
+    margin: 0 auto;
+    max-width: 90%; 
+}

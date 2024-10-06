@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Driver } from '../../../models/models';
 import { Package } from '../../../models/models';
 
-const API_URL = 'http://localhost:8080/api/';
+const API_URL: string = 'http://localhost:8080/api/';
 
 const httpOptions = {
   headers: new HttpHeaders({

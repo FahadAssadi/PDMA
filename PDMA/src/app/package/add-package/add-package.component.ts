@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DatabaseService } from '../../shared/services/database/database.service';
+
 import type { Package } from '../../models/models';
 import type { Driver } from '../../models/models';
 
@@ -35,7 +36,6 @@ export class AddPackageComponent {
   addPackage(): void {
     // Add package to database
     this.db.createPackage(this.package).subscribe((data) => {
-      console.log(data);
     });
 
     // Reset form

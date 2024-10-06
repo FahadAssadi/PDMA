@@ -10,6 +10,7 @@ export type Driver = {
     driverDepartment: string;
     driverLicense: string;
     driverIsActive: boolean;
+    driverCreatedAt: string;
 }
 
 export type Package = {
