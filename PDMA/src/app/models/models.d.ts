@@ -13,6 +13,8 @@ export type Driver = {
     driverCreatedAt: string;
 }
 
+export type DriverUpdateDetails = Pick<Driver, 'driverId' | 'driverDepartment' | 'driverLicense'>;
+
 export type Package = {
     _id: string;
     packageTitle: string;

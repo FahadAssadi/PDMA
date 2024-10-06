@@ -1,8 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Driver } from '../../../models/models';
-import { Package } from '../../../models/models';
+
+import type { Driver } from '../../../models/models';
+import type { DriverUpdateDetails } from '../../../models/models';
+import type { Package } from '../../../models/models';
 
 const API_URL: string = 'http://localhost:8080/api/';
 
@@ -32,8 +34,8 @@ export class DatabaseService {
     return this.http.delete<void>(API_URL + 'driver/' + id, httpOptions);
   }
 
-  updateDriver(id: string, data: Driver): Observable<Driver> {
-    return this.http.put<Driver>(API_URL + 'driver/' + id, data, httpOptions);
+  updateDriver(data: DriverUpdateDetails): Observable<Driver> {
+    return this.http.put<Driver>(API_URL + 'driver/' + data.driverId, data, httpOptions);
   }
 
   // Package CRUD operations

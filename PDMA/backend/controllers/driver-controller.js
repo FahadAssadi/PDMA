@@ -48,7 +48,7 @@ module.exports = {
 
     updateOne: async (req, res) => {
         // Update the driver by mongodb ID
-        let response = await Driver.updateOne({ _id: req.params.id }, req.body, { new: true });
+        let response = await Driver.updateOne({ driverId: req.params.id }, req.body, { new: true });
 
         // Throw an error if the driver is not found
         if (!response.matchedCount) {
