@@ -15,9 +15,13 @@ import type { Driver } from '../../models/models.d.ts';
 export class DeleteDriverComponent {
   drivers: Driver[] = [];
 
-  constructor(private db: DatabaseService) {}
+  constructor(private db: DatabaseService) {} 
 
   ngOnInit(): void {
+    this.getDrivers();
+  }
+
+  getDrivers(): void {
     this.db.getDrivers().subscribe((drivers) => {
       this.drivers = drivers;
     });

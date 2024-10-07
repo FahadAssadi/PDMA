@@ -19,6 +19,10 @@ export class AddPackageComponent {
   constructor(private db: DatabaseService, private router: Router) {}
 
   ngOnInit(): void {
+    this.getDrivers();
+  }
+
+  getDrivers(): void {
     this.db.getDrivers().subscribe((drivers) => {
       this.drivers = drivers;
     });

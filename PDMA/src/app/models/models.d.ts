@@ -20,6 +20,7 @@ export type Driver = {
     driverLicense: string;
     driverIsActive: boolean;
     driverCreatedAt: string;
+    assignedPackages: Package[];
 }
 
 export type DriverUpdateDetails = Pick<Driver, 'driverId' | 'driverDepartment' | 'driverLicense'>;

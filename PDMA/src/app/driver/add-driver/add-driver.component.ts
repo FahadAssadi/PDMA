@@ -22,7 +22,8 @@ export class AddDriverComponent {
     driverDepartment: '',
     driverLicense: '',
     driverIsActive: false,
-    driverCreatedAt: ''
+    driverCreatedAt: '',
+    assignedPackages: []
   };
 
   addDriver(): void {

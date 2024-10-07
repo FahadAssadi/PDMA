@@ -16,6 +16,10 @@ export class StatsComponent {
   constructor(private db: DatabaseService) {}
 
   ngOnInit(): void {
+    this.getStats();
+  }
+
+  getStats(): void {
     // Get statistics from database
     this.db.getStatistics().subscribe((stats) => {
       this.statistics = stats;

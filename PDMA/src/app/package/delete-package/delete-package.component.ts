@@ -17,6 +17,10 @@ export class DeletePackageComponent {
   constructor(private db: DatabaseService) {}
 
   ngOnInit(): void {
+    this.getPackages();
+  }
+
+  getPackages(): void {
     this.db.getPackages().subscribe((packages) => {
       this.packages = packages;
     });
