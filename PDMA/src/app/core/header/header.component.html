@@ -18,11 +18,11 @@
 
             <!-- Driver links -->
             <div class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="driverDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Driver <img src="/assets/driver.png" alt="Driver Icon" class="img-fluid" style="width: 30px; height: 30px;">
                 </a>
 
-                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                <ul class="dropdown-menu" aria-labelledby="driverDropdown">
                     @for(route of navLinks.driver; track $index) {
                       <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
                     }
@@ -33,11 +33,11 @@
 
             <!-- Package links -->
             <div class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Package <img src="/assets/package.png" alt="Driver Icon" class="img-fluid" style="width: 30px; height: 30px;">
+              <a class="nav-link dropdown-toggle" href="#" id="packageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Package <img src="/assets/package.png" alt="Package Icon" class="img-fluid" style="width: 30px; height: 30px;">
               </a>
 
-              <ul class="dropdown-menu" aria-labelledby="userDropdown">
+              <ul class="dropdown-menu" aria-labelledby="packageDropdown">
                   @for(route of navLinks.package; track $index) {
                     <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
                   }
@@ -48,11 +48,11 @@
 
             <!-- Cloud links -->
             <div class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Cloud Services <img src="/assets/cloud-server.png" alt="Driver Icon" class="img-fluid" style="width: 30px; height: 30px;">
+              <a class="nav-link dropdown-toggle" href="#" id="cloudDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Cloud Services <img src="/assets/cloud-server.png" alt="Cloud Icon" class="img-fluid" style="width: 30px; height: 30px;">
               </a>
 
-              <ul class="dropdown-menu" aria-labelledby="userDropdown">
+              <ul class="dropdown-menu" aria-labelledby="cloudDropdown">
                   @for(route of navLinks.cloud; track $index) {
                     <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
                   }
@@ -79,10 +79,11 @@
                     @for(route of navLinks.user; track $index) {
                       <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
                     }
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" (click)="logout()">Logout</a>
                 </ul>
             </div>
              
         </div>
     </nav>
 </div>
-

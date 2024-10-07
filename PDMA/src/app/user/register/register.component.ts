@@ -19,7 +19,7 @@ export class RegisterComponent {
     password: '',
   };
 
-  confirmPassword = '';
+  confirmPassword: string = '';
 
   register(): void {
     // Check if passwords match
