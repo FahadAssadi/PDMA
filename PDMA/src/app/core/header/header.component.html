@@ -1,39 +1,73 @@
 <!-- Logo -->
-<div class="container-fluid d-flex justify-content-center mb-3">
+<div class="container-fluid d-flex justify-content-center mb-2">
     <a [routerLink]="['']">
-        <img src="/assets/logo.png" alt="Logo" class="img-fluid mb-3">
+        <img src="/assets/logo.png" alt="Logo" class="img-fluid">
     </a>
 </div>
 
 <!-- Navbar -->
-<div class="container-fluid d-flex justify-content-center mb-3">
+<div class="container-fluid d-flex justify-content-center">
     <nav class="navbar navbar-expand-lg justify-content-center navbar-light bg-light">
         <div class="navbar-nav flex-wrap justify-content-center">
             <!-- Home link -->
-            <a class="nav-item nav-link" [routerLink]="navLinks.home.path">{{ navLinks.home.title }}</a>
+            <a class="nav-item nav-link" [routerLink]="navLinks.home.path">
+                <img src="/assets/home.png" alt="Home Icon" class="img-fluid" style="width: 30px; height: 30px;">
+            </a>
             
             <div class="vr mx-2"></div>
 
             <!-- Driver links -->
-            @for(route of navLinks.driver; track $index) {
-                <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
-            }
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Driver <img src="/assets/driver.png" alt="Driver Icon" class="img-fluid" style="width: 30px; height: 30px;">
+                </a>
+
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    @for(route of navLinks.driver; track $index) {
+                      <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
+                    }
+                </ul>
+            </div>
 
             <div class="vr mx-2"></div>
 
             <!-- Package links -->
-            @for(route of navLinks.package; track $index) {
-                <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
-            }
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Package <img src="/assets/package.png" alt="Driver Icon" class="img-fluid" style="width: 30px; height: 30px;">
+              </a>
 
+              <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                  @for(route of navLinks.package; track $index) {
+                    <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
+                  }
+              </ul>
+            </div>
+            
             <div class="vr mx-2"></div>
 
             <!-- Cloud links -->
-            @for(route of navLinks.cloud; track $index) {
-                <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
-            }
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Cloud Services <img src="/assets/cloud-server.png" alt="Driver Icon" class="img-fluid" style="width: 30px; height: 30px;">
+              </a>
+
+              <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                  @for(route of navLinks.cloud; track $index) {
+                    <a class="nav-item nav-link" [routerLink]="route.path">{{ route.title }}</a>
+                  }
+              </ul>
+            </div>
+            
 
             <div class="vr mx-2"></div>  
+
+            <!-- Stats link -->
+            <a class="nav-item nav-link" [routerLink]="navLinks.stats.path">
+                Statistics <img src="/assets/stats.png" alt="Stats Icon" class="img-fluid" style="width: 30px; height: 30px;">
+            </a>
+
+            <div class="vr mx-2"></div> 
 
             <!-- User links -->
             <div class="nav-item dropdown">

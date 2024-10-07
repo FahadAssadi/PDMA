@@ -15,7 +15,7 @@ export class HeaderComponent {
     driver: routes.slice(1, 5),
     package: routes.slice(5, 9),
     cloud: routes.slice(9, 12),
-    user: routes.slice(12, 15),
+    stats: routes[12],
+    user: routes.slice(13, 15),
   }
-
 }
