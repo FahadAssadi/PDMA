@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { DatabaseService } from '../../shared/services/database/database.service';
 import { Router } from '@angular/router';
 
-import type { PackageUpdateDetails } from '../../models/models.d.ts';
+import { PackageUpdateDetails } from '../../models/Package';
 
 @Component({
   selector: 'app-update-package',
@@ -15,10 +15,7 @@ import type { PackageUpdateDetails } from '../../models/models.d.ts';
 export class UpdatePackageComponent {
   constructor(private db: DatabaseService, private router: Router) {}
 
-  packageDetails: PackageUpdateDetails = {
-    packageId: '',
-    packageDestination: ''
-  };
+  packageDetails: PackageUpdateDetails = new PackageUpdateDetails();
 
   updatePackage(): void {
     // Update package in database
@@ -28,12 +25,6 @@ export class UpdatePackageComponent {
         this.router.navigate(['/invalid-data']);
       }
     });
-
-    // Reset form
-    this.packageDetails = {
-      packageId: '',
-      packageDestination: ''
-    };
 
     this.router.navigate(['/list-packages']);
   }

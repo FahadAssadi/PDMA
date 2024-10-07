@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { DatabaseService } from '../../shared/services/database/database.service';
 import { Router } from '@angular/router';
 
-import type { DriverUpdateDetails } from '../../models/models.d.ts';
+import { DriverUpdateDetails } from '../../models/Driver';
 
 @Component({
   selector: 'app-update-driver',
@@ -15,11 +15,7 @@ import type { DriverUpdateDetails } from '../../models/models.d.ts';
 export class UpdateDriverComponent {
   constructor(private db: DatabaseService, private router: Router) {}
 
-  driverDetails: DriverUpdateDetails = {
-    driverId: '',
-    driverDepartment: '',
-    driverLicense: ''
-  };
+  driverDetails: DriverUpdateDetails = new DriverUpdateDetails();
 
   updateDriver(): void {
     // Update driver in database
@@ -29,13 +25,6 @@ export class UpdateDriverComponent {
         this.router.navigate(['/invalid-data']);
       }
     });
-
-    // Reset form
-    this.driverDetails = {
-      driverId: '',
-      driverDepartment: '',
-      driverLicense: ''
-    };
 
     this.router.navigate(['/list-drivers']);
   }

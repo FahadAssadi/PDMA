@@ -2,12 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import type { Driver } from '../../../models/models';
-import type { DriverUpdateDetails } from '../../../models/models';
-import type { Package } from '../../../models/models';
-import type { PackageUpdateDetails } from '../../../models/models';
-import type { Statistics } from '../../../models/models';
-import type { UserDetails } from '../../../models/models';
+import type { UserDetails } from '../../../models/UserDetails';
+import type { Statistics } from '../../../models/Statistics';
+import type { Driver, DriverUpdateDetails } from '../../../models/Driver';
+import type { Package, PackageUpdateDetails } from '../../../models/Package';
 
 const API_URL: string = 'http://localhost:8080/api/';
 

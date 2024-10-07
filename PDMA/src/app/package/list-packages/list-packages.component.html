@@ -9,6 +9,7 @@
                     <th scope="col">Destination</th>
                     <th scope="col">Is Allocated</th>
                     <th scope="col">Created At</th>
+                    <th scope="col">View</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,10 +21,18 @@
                     <td>{{ package.packageDestination }}</td>
                     <td>{{ package.packageIsAllocated }}</td>
                     <td>{{ package.packageCreatedAt }}</td>
+                    <td> 
+                        <button class="btn btn-primary" (click)="viewPackage(package._id)"> ? </button>
+                    </td>
                 </tr>
                 }
             </tbody>
         </table>
+
+        @if(isViewingPackage) {
+            <h3 style="text-align: center;"> Package Details </h3>
+            <app-list-drivers [drivers]="driver"></app-list-drivers>
+        }
     } @else {
         <h3 style="text-align: center;"> No Packages Assigned to Drivers </h3>
     }

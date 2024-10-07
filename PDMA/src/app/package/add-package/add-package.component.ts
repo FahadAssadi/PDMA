@@ -3,8 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { DatabaseService } from '../../shared/services/database/database.service';
 import { Router } from '@angular/router';
 
-import type { Package } from '../../models/models';
-import type { Driver } from '../../models/models';
+import { Package } from '../../models/Package';
+import { Driver } from '../../models/Driver';
 
 @Component({
   selector: 'app-add-package',
@@ -28,17 +28,7 @@ export class AddPackageComponent {
     });
   }
 
-  package: Package = {
-    _id: '',
-    packageId: '',
-    packageTitle: '',
-    packageDescription: '',
-    packageDestination: '',
-    packageWeight: 0,
-    driverId: '',
-    packageIsAllocated: false,
-    packageCreatedAt: ''
-  };
+  package: Package = new Package();
 
   addPackage(): void {
     // Add package to database
@@ -48,19 +38,6 @@ export class AddPackageComponent {
         this.router.navigate(['/invalid-data']);
       }
     });
-
-    // Reset form
-    this.package = {
-      _id: '',
-      packageId: '',
-      packageTitle: '',
-      packageDescription: '',
-      packageDestination: '',
-      packageWeight: 0,
-      driverId: '',
-      packageIsAllocated: false,
-      packageCreatedAt: ''
-    };
 
     this.router.navigate(['/list-packages']);
   }

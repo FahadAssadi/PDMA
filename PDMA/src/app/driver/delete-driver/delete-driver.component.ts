@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { DatabaseService } from '../../shared/services/database/database.service';
 import { StringToUpperPipe } from '../../shared/pipes/string-to-upper/string-to-upper.pipe';
 
-import type { Driver } from '../../models/models.d.ts';
+import type { Driver } from '../../models/Driver';
 
 
 @Component({

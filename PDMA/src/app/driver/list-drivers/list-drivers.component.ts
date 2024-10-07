@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DatabaseService } from '../../shared/services/database/database.service';
 import { StringToUpperPipe } from '../../shared/pipes/string-to-upper/string-to-upper.pipe';
 import { ListPackagesComponent } from '../../package/list-packages/list-packages.component';
 
-import type { Driver } from '../../models/models.d.ts';
-import type { Package } from '../../models/models.d.ts';
+import type { Driver } from '../../models/Driver';
+import type { Package } from '../../models/Package';
 
 @Component({
   selector: 'app-list-drivers',
@@ -14,7 +14,7 @@ import type { Package } from '../../models/models.d.ts';
   styleUrl: './list-drivers.component.css'
 })
 export class ListDriversComponent {
-  drivers: Driver[] = [];
+  @Input() drivers: Driver[] = [];
 
   isViewingDriver: boolean = false;
   packages: Package[] = [];
@@ -22,7 +22,9 @@ export class ListDriversComponent {
   constructor(private db: DatabaseService) {}
 
   ngOnInit(): void {
-    this.getDrivers();
+    if (!this.drivers.length) {
+      this.getDrivers();
+    }
   }
 
   getDrivers(): void {
@@ -32,7 +34,7 @@ export class ListDriversComponent {
   }
 
   viewDriver(_id: string): void {
-    const driver = this.drivers.find((driver) => driver._id === _id);
+    const driver: Driver | undefined = this.drivers.find((driver) => driver._id === _id);
     this.isViewingDriver = true;
 
     if (driver) {

@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { DatabaseService } from '../../shared/services/database/database.service';
 import { Router } from '@angular/router';
 
-import type { Driver } from '../../models/models.d.ts';
+import { Driver } from '../../models/Driver';
 
 @Component({
   selector: 'app-add-driver',
@@ -15,16 +15,7 @@ import type { Driver } from '../../models/models.d.ts';
 export class AddDriverComponent {
   constructor(private db: DatabaseService, private router: Router) {}
 
-  driver: Driver = {
-    _id: '',
-    driverId: '',
-    driverName: '',
-    driverDepartment: '',
-    driverLicense: '',
-    driverIsActive: false,
-    driverCreatedAt: '',
-    assignedPackages: []
-  };
+  driver: Driver = new Driver();
 
   addDriver(): void {
     // Add driver to database
