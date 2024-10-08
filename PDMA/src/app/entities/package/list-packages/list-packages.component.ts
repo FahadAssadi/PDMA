@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { DatabaseService } from '../../shared/services/database/database.service';
-import { KgToGPipe } from '../../shared/pipes/kg-to-g/kg-to-g.pipe';
+import { DatabaseService } from '../../../shared/services/database/database.service';
+import { KgToGPipe } from '../../../shared/pipes/kg-to-g/kg-to-g.pipe';
 import { ListDriversComponent } from '../../driver/list-drivers/list-drivers.component';
 
-import type { Driver } from '../../models/Driver';
-import type { Package } from '../../models/Package';
+import type { Package } from '../../../shared/models/Package';
+import type { Driver } from '../../../shared/models/Driver';
 
 @Component({
   selector: 'app-list-packages',
@@ -16,7 +16,7 @@ import type { Package } from '../../models/Package';
 export class ListPackagesComponent {
   @Input() packages: Package[] = [];
 
-  driver: Driver[]  = [];
+  driver: any = 0;
   isViewingPackage: boolean = false;
 
   constructor(private db: DatabaseService) {}
@@ -39,9 +39,11 @@ export class ListPackagesComponent {
     this.isViewingPackage = true;
 
     if (pkg) {
-      this.driver = [pkg.driverId];
+      this.driver = pkg.driverId;
     } else {
-      this.driver = [];
+      this.driver = 0;
     }
+
+    console.log(this.driver);
   }
 }

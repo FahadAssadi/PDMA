@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../shared/services/auth/auth.service.js';
 import { Router, RouterModule } from '@angular/router';
 
-import { initialiseUserDetails, type UserDetails } from '../../models/UserDetails';
+import { UserDetails } from '../../shared/models/UserDetails.js';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   constructor(private auth: AuthService, private router: Router) {}
 
-  userDetails: UserDetails = initialiseUserDetails();
+  userDetails: UserDetails = new UserDetails();
 
   login(): void {
     this.auth.login(this.userDetails)

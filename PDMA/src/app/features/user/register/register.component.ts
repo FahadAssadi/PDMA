@@ -3,7 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth/auth.service.js';
 
-import { initialiseUserDetails, type UserDetails } from '../../models/models.js';
+import { UserDetails } from '../../shared/models/UserDetails.js';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +15,7 @@ import { initialiseUserDetails, type UserDetails } from '../../models/models.js'
 export class RegisterComponent {
   constructor(private auth: AuthService, private router: Router) {}
 
-  userDetails: UserDetails = initialiseUserDetails();
+  userDetails: UserDetails = new UserDetails();
   confirmPassword: string = '';
 
   register(): void {

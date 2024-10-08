@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DatabaseService } from '../database/database.service';
 
-import type { UserDetails } from '../../../models/UserDetails';
+import { UserDetails } from '../../models/UserDetails';
 
 @Injectable({
   providedIn: 'root'
