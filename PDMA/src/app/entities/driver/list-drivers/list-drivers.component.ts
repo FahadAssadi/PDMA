@@ -46,6 +46,7 @@ export class ListDriversComponent {
     this.tableActions = [
       {
         label: 'View',
+        style: 'btn btn-primary',
         function: (driver: Driver) => this.viewDriver(driver)
       }
     ];

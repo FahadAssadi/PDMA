@@ -22,7 +22,7 @@
                     <td>
                         <div class="btn-group" role="group">
                             @for(action of tableActions; track $index) {
-                                <button class="btn btn-primary" (click)="action.function(item)"> {{ action.label }} </button>
+                                <button class="{{ action.style }}" (click)="action.function(item)"> {{ action.label }} </button>
                             }
                         </div>
                     </td>

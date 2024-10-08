@@ -47,6 +47,7 @@ export class ListPackagesComponent {
     this.tableActions = [
       {
         label: 'View',
+        style: 'btn btn-primary',
         function: (pkg: Package) => this.viewPackage(pkg)
       }
     ];
