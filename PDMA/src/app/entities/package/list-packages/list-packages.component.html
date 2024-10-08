@@ -1,37 +1,14 @@
 <div class="table-container">
     @if(packages.length > 0) {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Weight</th>
-                    <th scope="col">Destination</th>
-                    <th scope="col">Is Allocated</th>
-                    <th scope="col">Created At</th>
-                    <th scope="col">View</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for(package of packages; track $index) {
-                <tr>
-                    <td>{{ package.packageId }}</td>
-                    <td>{{ package.packageTitle }}</td>
-                    <td>{{ package.packageWeight | kgToG }}</td>
-                    <td>{{ package.packageDestination }}</td>
-                    <td>{{ package.packageIsAllocated }}</td>
-                    <td>{{ package.packageCreatedAt }}</td>
-                    <td> 
-                        <button class="btn btn-primary" (click)="viewPackage(package._id)"> ? </button>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
+        <app-table-template 
+            [tableHeaders]="tableHeaders"
+            [tableData]="tableData" 
+            [tableActions]="tableActions">
+        </app-table-template>
         
         @if(isViewingPackage) {
             <h3 style="text-align: center;"> Package Details </h3>
-            <!-- <app-list-drivers [packageKaDrivers]="driver"></app-list-drivers> -->
+
         }
     } @else {
         <h3 style="text-align: center;"> No Packages Assigned to Drivers </h3>

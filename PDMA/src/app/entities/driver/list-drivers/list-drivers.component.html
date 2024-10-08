@@ -1,35 +1,15 @@
 <div class="table-container">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Department</th>
-                <th scope="col">License</th>
-                <th scope="col">is Active</th>
-                <th scope="col">Created At</th>
-                <th scope="col">View</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for(driver of drivers; track $index) {
-                <tr>
-                    <td>{{ driver.driverId }}</td>
-                    <td>{{ driver.driverName | stringToUpper }}</td>
-                    <td>{{ driver.driverDepartment }}</td>
-                    <td>{{ driver.driverLicense }}</td>
-                    <td>{{ driver.driverIsActive }}</td>
-                    <td>{{ driver.driverCreatedAt }}</td>
-                    <td> 
-                        <button class="btn btn-primary" (click)="viewDriver(driver._id)"> ? </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-
-    @if(isViewingDriver) {
-        <h3 style="text-align: center;"> Assigned Packages </h3>
-        <app-list-packages [packages]="packages"></app-list-packages>
+    @if(drivers.length > 0) {
+        <app-table-template 
+            [tableHeaders]="tableHeaders"
+            [tableData]="tableData" 
+            [tableActions]="tableActions">
+        </app-table-template>
+        
+        @if(isViewingDriver) {
+            <h3 style="text-align: center;"> Driver Details </h3>
+        }
+    } @else {
+        <h3 style="text-align: center;"> No Drivers Assigned to Packages </h3>
     }
 </div>

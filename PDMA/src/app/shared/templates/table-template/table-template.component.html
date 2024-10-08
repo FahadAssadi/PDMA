@@ -1,34 +1,35 @@
 <table class="table">
     <thead>
         <tr>
-
-            @for(header of tableHeaders) {
-                <th scope="col">{{ header }}</th>
+            @for(header of tableHeaders; track $index) {
+                <th scope="col">{{ header.label }}</th>
             }
 
             @if(tableActions.length > 0) {
                 <th scope="col">Actions</th>
             }
-
         </tr>
     </thead>
 
     <tbody>
-        @for(row of tableData; track $index) {
+        @for(item of tableData; track $index) {
             <tr>
-                @for(cell of row) {
-                    <td>{{ cell }}</td>
+                @for(header of tableHeaders; track $index) {
+                    <td>{{ item[header.key] }}</td>
                 }
 
                 @if(tableActions.length > 0) {
                     <td>
-                        @for(action of tableActions) {
-                            <button class="btn btn-primary" (click)="action.function(row)"> {{ action.label }} </button>
-                        }
+                        <div class="btn-group" role="group">
+                            @for(action of tableActions; track $index) {
+                                <button class="btn btn-primary" (click)="action.function(item)"> {{ action.label }} </button>
+                            }
+                        </div>
                     </td>
-                }
+                }      
             </tr>
         }
+        
     </tbody>
 
 </table>
