@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DatabaseService } from '../../shared/services/database/database.service';
+import { DatabaseService } from '../../../shared/services/database/database.service';
 import { Router } from '@angular/router';
 
-import { Driver } from '../../models/Driver';
+import { Driver } from '../../../shared/models/Driver';
 
 @Component({
   selector: 'app-add-driver',

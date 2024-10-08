@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { DatabaseService } from '../../shared/services/database/database.service';
-import { StringToUpperPipe } from '../../shared/pipes/string-to-upper/string-to-upper.pipe';
+import { DatabaseService } from '../../../shared/services/database/database.service';
+import { StringToUpperPipe } from '../../../shared/pipes/string-to-upper/string-to-upper.pipe';
 
-import { Driver } from '../../models/Driver';
+import { Driver } from '../../../shared/models/Driver';
 
 
 @Component({

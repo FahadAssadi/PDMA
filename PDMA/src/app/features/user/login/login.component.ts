@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../shared/services/auth/auth.service.js';
+import { AuthService } from '../../../shared/services/auth/auth.service.js';
 import { Router, RouterModule } from '@angular/router';
 
-import { UserDetails } from '../../shared/models/UserDetails.js';
+import { UserDetails } from '../../../shared/models/UserDetails.js';
 import { FormsModule } from '@angular/forms';
 
 @Component({

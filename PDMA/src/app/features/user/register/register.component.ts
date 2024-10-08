@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../shared/services/auth/auth.service.js';
+import { AuthService } from '../../../shared/services/auth/auth.service.js';
 
-import { UserDetails } from '../../shared/models/UserDetails.js';
+import { UserDetails } from '../../../shared/models/UserDetails.js';
 
 @Component({
   selector: 'app-register',

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DatabaseService } from '../../shared/services/database/database.service';
+import { DatabaseService } from '../../../shared/services/database/database.service';
 import { Router } from '@angular/router';
 
-import { DriverUpdateDetails } from '../../models/Driver';
+import { DriverUpdateDetails } from '../../../shared/models/Driver';
 
 @Component({
   selector: 'app-update-driver',

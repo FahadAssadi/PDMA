@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { TableAction } from '../../models/models';
 
 @Component({
   selector: 'app-table-template',
@@ -8,5 +9,15 @@ import { Component } from '@angular/core';
   styleUrl: './table-template.component.css'
 })
 export class TableTemplateComponent {
+  @Input() tableHeaders: string[] = [];
+  @Input() tableData: any[] = [];
+  @Input() tableActions: TableAction[] = [];
+
+  constructor() {}
+
+  ngOnInit(): void {
+    console.log("Table headers: ", this.tableHeaders);
+    console.log("Table data: ", this.tableData);
+  }
 
 }
