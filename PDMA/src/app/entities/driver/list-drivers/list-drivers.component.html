@@ -5,9 +5,10 @@
             [tableData]="tableData" 
             [tableActions]="tableActions">
         </app-table-template>
-        
+
         @if(isViewingDriver) {
             <h3 style="text-align: center;"> Driver Details </h3>
+            <app-list-packages [packages]="assignedPackages"></app-list-packages>
         }
     } @else {
         <h3 style="text-align: center;"> No Drivers Assigned to Packages </h3>

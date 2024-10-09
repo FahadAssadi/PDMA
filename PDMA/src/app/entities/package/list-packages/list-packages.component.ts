@@ -7,19 +7,20 @@ import { TableTemplateComponent } from '../../../shared/templates/table-template
 import type { TableAction } from '../../../shared/models/models';
 import type { TableHeader } from '../../../shared/models/models';
 import type { Package } from '../../../shared/models/Package';
-import type { Driver } from '../../../shared/models/Driver';
+import { Driver } from '../../../shared/models/Driver';
+import { StringToUpperPipe } from '../../../shared/pipes/string-to-upper/string-to-upper.pipe';
 
 @Component({
   selector: 'app-list-packages',
   standalone: true,
-  imports: [TableTemplateComponent, KgToGPipe, ListDriversComponent],
+  imports: [TableTemplateComponent, KgToGPipe, StringToUpperPipe, ListDriversComponent],
   templateUrl: './list-packages.component.html',
   styleUrl: './list-packages.component.css'
 })
 export class ListPackagesComponent {
   @Input() packages: Package[] = [];
 
-  driver: any = 0;
+  driverAssigned: Driver = new Driver();
   isViewingPackage: boolean = false;
 
   // Table Related Info
@@ -51,6 +52,10 @@ export class ListPackagesComponent {
         function: (pkg: Package) => this.viewPackage(pkg)
       }
     ];
+
+    if(!this.tableData.length) {
+      this.tableData = this.packages;
+    }
   }
 
   getPackages(): void {
@@ -63,7 +68,7 @@ export class ListPackagesComponent {
 
   viewPackage(pkg: Package): void {
     this.isViewingPackage = true;
-    this.driver = pkg.driverId;
+    this.driverAssigned = pkg.driverId;
 
     this.cd.detectChanges();
   }

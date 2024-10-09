@@ -1,8 +1,8 @@
-import { Component, Input, ChangeDetectorRef, inject  } from '@angular/core';
+import { Component, Input, ChangeDetectorRef  } from '@angular/core';
 import { DatabaseService } from '../../../shared/services/database/database.service';
 import { StringToUpperPipe } from '../../../shared/pipes/string-to-upper/string-to-upper.pipe';
-import { ListPackagesComponent } from '../../package/list-packages/list-packages.component';
 import { TableTemplateComponent } from '../../../shared/templates/table-template/table-template.component';
+import { ListPackagesComponent } from '../../package/list-packages/list-packages.component';
 
 import type { Driver } from '../../../shared/models/Driver';
 import type { Package } from '../../../shared/models/Package';
@@ -25,6 +25,7 @@ export class ListDriversComponent {
   tableActions: TableAction[] = [];
 
   isViewingDriver: boolean = false;
+  assignedPackages: Package[] = [];
 
   constructor(private db: DatabaseService, private cd: ChangeDetectorRef) {}
 
@@ -61,6 +62,7 @@ export class ListDriversComponent {
   }
 
   viewDriver(driver: Driver): void {
+    this.assignedPackages = driver.assignedPackages;
     this.isViewingDriver = true;
 
     this.cd.detectChanges();
