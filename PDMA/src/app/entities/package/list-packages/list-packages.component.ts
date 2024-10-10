@@ -18,7 +18,7 @@ import { StringToUpperPipe } from '../../../shared/pipes/string-to-upper/string-
   styleUrl: './list-packages.component.css'
 })
 export class ListPackagesComponent {
-  @Input() packages: Package[] = [];
+  @Input() packages: Package[] | null = null;
 
   driverAssigned: Driver = new Driver();
   isViewingPackage: boolean = false;
@@ -32,9 +32,9 @@ export class ListPackagesComponent {
 
   ngOnInit(): void {
     // If packages are not provided, get them from the database
-    if (!this.packages.length) {
+    if (this.packages === null) {
       this.getPackages();
-    } 
+    }
 
     // Update table data
     this.tableHeaders = [
@@ -53,15 +53,13 @@ export class ListPackagesComponent {
       }
     ];
 
-    if(!this.tableData.length) {
-      this.tableData = this.packages;
-    }
+    this.tableData = this.packages ?? [];
   }
 
   getPackages(): void {
     this.db.getPackages().subscribe((packages) => {
       this.packages = packages;
-      
+
       this.tableData = this.packages;
     });
   }
@@ -69,6 +67,8 @@ export class ListPackagesComponent {
   viewPackage(pkg: Package): void {
     this.isViewingPackage = true;
     this.driverAssigned = pkg.driverId;
+
+    console.log('Viewing Package:', this.driverAssigned);
 
     this.cd.detectChanges();
   }

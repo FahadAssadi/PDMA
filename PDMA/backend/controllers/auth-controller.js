@@ -1,4 +1,4 @@
-const firebaseDB = require('../config/firebase-setup');
+const firebaseDB = require('../config/database/firebase-setup');
 const { collection, addDoc, getDocs, query, where } = require("firebase/firestore");
 
 module.exports = {

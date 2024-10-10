@@ -1,14 +1,14 @@
 <div class="table-container">
-    @if(packages.length > 0) {
-        <app-table-template 
+    @if(packages && packages.length > 0) {
+        <app-table-template
             [tableHeaders]="tableHeaders"
-            [tableData]="tableData" 
+            [tableData]="tableData"
             [tableActions]="tableActions">
         </app-table-template>
-        
+
         @if(isViewingPackage) {
             <h3 style="text-align: center;"> Package Details </h3>
-            
+
             <!-- For some reason doesnt work when calling app-list-drivers here -->
             <table class="table">
                 <thead>
@@ -22,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                         <tr>
                             <td>{{ driverAssigned.driverId }}</td>
                             <td>{{ driverAssigned.driverName | stringToUpper }}</td>
@@ -31,13 +31,13 @@
                             <td>{{ driverAssigned.driverIsActive }}</td>
                             <td>{{ driverAssigned.driverCreatedAt }}</td>
                         </tr>
-    
+
                 </tbody>
             </table>
-                
+
         }
     } @else {
         <h3 style="text-align: center;"> No Packages Assigned to Drivers </h3>
     }
-    
+
 </div>

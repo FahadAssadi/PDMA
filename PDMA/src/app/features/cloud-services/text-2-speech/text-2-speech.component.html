@@ -1,1 +1,8 @@
-<p>text-2-speech works!</p>
+<app-list-drivers [tableActions] = "tableActions"></app-list-drivers>
+
+@if(audioSrc) {
+  <audio controls>
+    <source [src]="audioSrc" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+}

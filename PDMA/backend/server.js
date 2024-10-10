@@ -3,16 +3,21 @@ const path = require('path');
 const morgan = require('morgan');
 
 // Setup the databases
-require('./config/mongoose-setup');
-require('./config/firebase-setup');
+require('./config/database/mongoose-setup');
+require('./config/database/firebase-setup');
 
 // Setup the express app
 /**
  * Initializes the Express application.
  * @constant {Object}
  */
+require('dotenv').config();
 const app = express();
 const PORT = 8080;
+
+// Socket.io setup
+const server = require('http').Server(app);
+require('./config/socket.io/socket.io')(server);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,4 +28,4 @@ app.use(express.static(path.join(__dirname, '../dist/pdma/browser')));
 // Setup the routes
 app.use('/api', require('./routers/router'));
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+server.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

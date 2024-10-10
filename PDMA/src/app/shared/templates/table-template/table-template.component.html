@@ -22,14 +22,14 @@
                     <td>
                         <div class="btn-group" role="group">
                             @for(action of tableActions; track $index) {
-                                <button class="{{ action.style }}" (click)="action.function(item)"> {{ action.label }} </button>
+                              <button class="{{ action.style }}" (click)="action.function(item)" style="margin-right: 5px;"> {{ action.label }} </button>
                             }
                         </div>
                     </td>
-                }      
+                }
             </tr>
         }
-        
+
     </tbody>
 
 </table>

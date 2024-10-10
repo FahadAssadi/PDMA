@@ -17,12 +17,12 @@ import type { TableAction, TableHeader } from '../../../shared/models/models';
 })
 export class ListDriversComponent {
   // Drivers Related Info
-  @Input() drivers: Driver[] = [];
+  @Input() drivers: Driver[] | null = null;
 
   // Table Related Info
   tableHeaders: TableHeader[] = [];
   tableData: any[] = [];
-  tableActions: TableAction[] = [];
+  @Input() tableActions: TableAction[] = [];
 
   isViewingDriver: boolean = false;
   assignedPackages: Package[] = [];
@@ -31,7 +31,7 @@ export class ListDriversComponent {
 
   ngOnInit(): void {
     // If drivers are not provided, get them from the database
-    if (!this.drivers.length) {
+    if (this.drivers === null) {
       this.getDrivers();
     }
 
@@ -44,13 +44,13 @@ export class ListDriversComponent {
       { key: 'driverIsActive', label: 'Is Active' },
       { key: 'driverCreatedAt', label: 'Created At' }
     ];
-    this.tableActions = [
+    this.tableActions.unshift(
       {
         label: 'View',
         style: 'btn btn-primary',
         function: (driver: Driver) => this.viewDriver(driver)
       }
-    ];
+    );
   }
 
   getDrivers(): void {
@@ -62,8 +62,10 @@ export class ListDriversComponent {
   }
 
   viewDriver(driver: Driver): void {
-    this.assignedPackages = driver.assignedPackages;
+    this.assignedPackages = [...driver.assignedPackages];
     this.isViewingDriver = true;
+
+    console.log(driver);
 
     this.cd.detectChanges();
   }

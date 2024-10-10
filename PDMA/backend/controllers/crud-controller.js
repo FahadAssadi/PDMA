@@ -1,4 +1,4 @@
-const firebaseDB = require('../config/firebase-setup');
+const firebaseDB = require('../config/database/firebase-setup');
 const { collection, doc, setDoc, getDoc, updateDoc  } = require("firebase/firestore");
 
 module.exports = {
@@ -17,7 +17,7 @@ module.exports = {
     getStats: async () => {
         // Get the stats document
         let statsDoc = await getDoc(doc(collection(firebaseDB, 'data'), 'stats'));
-        
+
         // If the stats document does not exist, initialize it
         if (!statsDoc.exists()) {
             await module.exports.initializeStats();
@@ -54,7 +54,7 @@ module.exports = {
         let statsData = statsDoc.data();
 
         //  Update the stats document with the new retrieval count
-        await updateDoc(doc(collection(firebaseDB, 'data'), 'stats'), { 
+        await updateDoc(doc(collection(firebaseDB, 'data'), 'stats'), {
             retrieve: statsData.retrieve + 1
         });
     },

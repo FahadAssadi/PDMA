@@ -1,8 +1,8 @@
 <div class="table-container">
-    @if(drivers.length > 0) {
-        <app-table-template 
+    @if(drivers && drivers.length > 0) {
+        <app-table-template
             [tableHeaders]="tableHeaders"
-            [tableData]="tableData" 
+            [tableData]="tableData"
             [tableActions]="tableActions">
         </app-table-template>
 
