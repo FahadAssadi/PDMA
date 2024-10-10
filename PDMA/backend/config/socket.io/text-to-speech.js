@@ -23,9 +23,7 @@ function textToSpeech(text, callback) {
       return;
     }
 
-    const fileName = `./output/${text}.mp3`;
-
-    console.log(fileName);
+    const fileName = `../../../public/output/${Date.now()}.mp3`;
 
     // Write the binary audio content to a local file
     fs.writeFile(fileName, response.audioContent, "binary", err => {
