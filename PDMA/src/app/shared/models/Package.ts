@@ -10,7 +10,7 @@ export class Package {
     driverId: Driver;
     packageIsAllocated: boolean;
     packageCreatedAt: string;
-  
+
     constructor() {
       this._id = '';
       this.packageId = '';

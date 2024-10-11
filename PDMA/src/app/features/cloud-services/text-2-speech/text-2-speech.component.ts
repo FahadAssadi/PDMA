@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, SimpleChange } from '@angular/core';
 import { ListDriversComponent } from '../../../entities/driver/list-drivers/list-drivers.component';
 import { TableAction } from '../../../shared/models/models';
 import { io } from 'socket.io-client';
@@ -11,33 +11,51 @@ import { Driver } from '../../../shared/models/Driver';
   templateUrl: './text-2-speech.component.html',
   styleUrl: './text-2-speech.component.css'
 })
-export class Text2SpeechComponent {
-  tableActions: TableAction[] = [
-    {
-      label: 'Speak',
-      style: 'btn btn-primary',
-      function: (driver: Driver) => this.speakText(driver.driverLicense)
-    }
-  ];
+export class Text2SpeechComponent implements OnChanges {
+  tableActions: TableAction[] = [];
 
   socket: any;
   audioSrc: string = '';
 
-  constructor() {}
+  isSpeaking: boolean = false;
+  showPlayer: boolean = false;
+
+  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+    this.tableActions = [
+      {
+        label: 'Speak',
+        style: 'btn btn-primary',
+        function: (driver: Driver) => this.speakText(driver.driverLicense)
+      }
+    ];
     // Initialize socket
     this.socket = io();
   }
 
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}): void {
+    console.log('showing player');
+    if (changes['audioSrc'].previousValue !== changes['audioSrc'].currentValue && changes['audioSrc'].currentValue !== '') {
+      this.showPlayer = true;
+      setTimeout(() => this.showPlayer = true, 5000);
+    }
+  }
+
   speakText(text: string): void {
+    this.isSpeaking = true;
+
     // Emit the text to the server
     this.socket.emit('text-to-speech', text);
 
     this.socket.on('text-to-speech', (data: any) => {
-      this.audioSrc = data;
+      const audioPath = './output/' + data + '.mp3';
+      this.audioSrc = audioPath;
+      console.log(audioPath);
 
-      console.log('Audio source: ', this.audioSrc);
+      this.showPlayer = true;
+
+      this.cd.detectChanges();
     });
   }
 }

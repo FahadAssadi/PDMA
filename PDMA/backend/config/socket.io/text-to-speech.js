@@ -23,7 +23,9 @@ function textToSpeech(text, callback) {
       return;
     }
 
-    const fileName = `../../../public/output/${Date.now()}.mp3`;
+    const dateNow = Date.now();
+
+    const fileName = `../public/output/${dateNow}.mp3`;
 
     // Write the binary audio content to a local file
     fs.writeFile(fileName, response.audioContent, "binary", err => {
@@ -33,7 +35,7 @@ function textToSpeech(text, callback) {
       }
     });
 
-    callback(fileName);
+    callback(dateNow);
   });
 }
 

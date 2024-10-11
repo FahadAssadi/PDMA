@@ -25,7 +25,6 @@ export class ListPackagesComponent {
 
   // Table Related Info
   tableHeaders: TableHeader[] = [];
-  tableData: any[] = [];
   tableActions: TableAction[] = [];
 
   constructor(private db: DatabaseService, private cd: ChangeDetectorRef) {}
@@ -52,15 +51,11 @@ export class ListPackagesComponent {
         function: (pkg: Package) => this.viewPackage(pkg)
       }
     ];
-
-    this.tableData = this.packages ?? [];
   }
 
   getPackages(): void {
     this.db.getPackages().subscribe((packages) => {
       this.packages = packages;
-
-      this.tableData = this.packages;
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 
 import type { TableAction } from '../../models/models';
 import type { TableHeader } from '../../models/models';
@@ -10,8 +10,10 @@ import type { TableHeader } from '../../models/models';
   templateUrl: './table-template.component.html',
   styleUrl: './table-template.component.css'
 })
-export class TableTemplateComponent {
+export class TableTemplateComponent implements OnChanges {
   @Input() tableHeaders: TableHeader[] = [];
   @Input() tableData: any[] = [];
   @Input() tableActions: TableAction[] = [];
+
+  ngOnChanges(): void { }
 }

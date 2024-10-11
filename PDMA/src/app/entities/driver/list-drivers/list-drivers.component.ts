@@ -4,7 +4,7 @@ import { StringToUpperPipe } from '../../../shared/pipes/string-to-upper/string-
 import { TableTemplateComponent } from '../../../shared/templates/table-template/table-template.component';
 import { ListPackagesComponent } from '../../package/list-packages/list-packages.component';
 
-import type { Driver } from '../../../shared/models/Driver';
+import { Driver } from '../../../shared/models/Driver';
 import type { Package } from '../../../shared/models/Package';
 import type { TableAction, TableHeader } from '../../../shared/models/models';
 
@@ -21,11 +21,10 @@ export class ListDriversComponent {
 
   // Table Related Info
   tableHeaders: TableHeader[] = [];
-  tableData: any[] = [];
   @Input() tableActions: TableAction[] = [];
 
   isViewingDriver: boolean = false;
-  assignedPackages: Package[] = [];
+  assignedPackages: Package[] = [ ];
 
   constructor(private db: DatabaseService, private cd: ChangeDetectorRef) {}
 
@@ -56,8 +55,6 @@ export class ListDriversComponent {
   getDrivers(): void {
     this.db.getDrivers().subscribe((drivers) => {
       this.drivers = drivers;
-
-      this.tableData = this.drivers;
     });
   }
 
@@ -65,7 +62,7 @@ export class ListDriversComponent {
     this.assignedPackages = [...driver.assignedPackages];
     this.isViewingDriver = true;
 
-    console.log(driver);
+    console.log(this.assignedPackages);
 
     this.cd.detectChanges();
   }
