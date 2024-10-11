@@ -12,7 +12,7 @@ module.exports = (server) => {
       require('./text-to-speech')(text, (fileName) => {
         io.emit('text-to-speech', fileName);
       });
-
     });
+    
   });
 }

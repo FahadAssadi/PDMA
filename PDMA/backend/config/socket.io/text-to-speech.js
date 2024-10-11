@@ -1,11 +1,11 @@
+const fs = require("fs");
+const path = require("path");
+// Imports the Google Cloud client library
+const textToSpeechAPI = require("@google-cloud/text-to-speech");
+
 function textToSpeech(text, callback) {
-  const fs = require("fs");
-
-  // Imports the Google Cloud client library
-  const textToSpeech = require("@google-cloud/text-to-speech");
-
   // Creates a client
-  const client = new textToSpeech.TextToSpeechClient();
+  const client = new textToSpeechAPI.TextToSpeechClient();
 
   // Construct the request
   const request = {
@@ -23,9 +23,7 @@ function textToSpeech(text, callback) {
       return;
     }
 
-    const dateNow = Date.now();
-
-    const fileName = `../public/output/${dateNow}.mp3`;
+    const fileName = path.join(process.cwd(), 'public/output', `${text}.mp3`);
 
     // Write the binary audio content to a local file
     fs.writeFile(fileName, response.audioContent, "binary", err => {
@@ -35,7 +33,7 @@ function textToSpeech(text, callback) {
       }
     });
 
-    callback(dateNow);
+    callback(text);
   });
 }
 

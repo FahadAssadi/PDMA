@@ -1,7 +1,14 @@
 <app-list-drivers [tableActions] = "tableActions"></app-list-drivers>
 
 @if(showPlayer) {
-  <audio controls src = {{audioSrc}} type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+
+  <div class="container text-center my-4">
+    <h3 class="text-center">Audio for: {{ audioText }}</h3>
+
+    <div class="audio-wrapper d-inline-block p-3 rounded shadow">
+      <audio controls [src]="audioMap.get(audioText)" type="audio/mpeg" class="audio-player">
+        <p>Your browser does not support the audio element.</p>
+      </audio>
+    </div>
+  </div>
 }
