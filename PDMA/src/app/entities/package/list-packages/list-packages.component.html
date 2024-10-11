@@ -1,40 +1,41 @@
 <div class="table-container">
     @if(packages && packages.length > 0) {
-        <app-table-template
-            [tableHeaders]="tableHeaders"
-            [tableData]="packages"
-            [tableActions]="tableActions">
-        </app-table-template>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Created At</th>
+                    @if(tableActions && tableActions.length) {
+                        <th scope="col">Actions</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for(package of packages; track $index) {
+                    <tr>
+                        <td>{{ package.packageId }}</td>
+                        <td>{{ package.packageTitle }}</td>
+                        <td>{{ package.packageWeight | kgToG }}</td>
+                        <td>{{ package.packageIsAllocated ? 'Allocated' : 'Not Allocated' }}</td>
+                        <td>{{ package.packageCreatedAt }}</td>
+                        @for(action of tableActions; track $index) {
+                            <td>
+                                <button class="{{ action.style }}" (click)="action.function(package); getPackages()">
+                                    {{ action.label }}
+                                </button>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
 
         @if(isViewingPackage) {
             <h3 style="text-align: center;"> Package Details </h3>
-
-            <!-- For some reason doesnt work when calling app-list-drivers here -->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Department</th>
-                        <th scope="col">License</th>
-                        <th scope="col">is Active</th>
-                        <th scope="col">Created At</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                        <tr>
-                            <td>{{ driverAssigned.driverId }}</td>
-                            <td>{{ driverAssigned.driverName | stringToUpper }}</td>
-                            <td>{{ driverAssigned.driverDepartment }}</td>
-                            <td>{{ driverAssigned.driverLicense }}</td>
-                            <td>{{ driverAssigned.driverIsActive }}</td>
-                            <td>{{ driverAssigned.driverCreatedAt }}</td>
-                        </tr>
-
-                </tbody>
-            </table>
-
+            <app-list-drivers [drivers]="driverAssigned" [tableActions] = []></app-list-drivers>
         }
     } @else {
         <h3 style="text-align: center;"> No Packages Assigned to Drivers </h3>

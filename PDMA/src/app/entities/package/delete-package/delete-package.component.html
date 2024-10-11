@@ -1,11 +1,3 @@
-<div class="table-container">
-    @if(packages.length > 0) {
-        <app-table-template 
-            [tableHeaders]="tableHeaders"
-            [tableData]="tableData" 
-            [tableActions]="tableActions">
-        </app-table-template>
-    } @else {
-        <h3 style="text-align: center;"> No Packages Available </h3>
-    }
-</div>
+<app-list-packages 
+    [tableActions] = "tableActions">
+</app-list-packages>

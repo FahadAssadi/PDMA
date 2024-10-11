@@ -1,41 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DatabaseService } from '../../../shared/services/database/database.service';
-import { StringToUpperPipe } from '../../../shared/pipes/string-to-upper/string-to-upper.pipe';
+import { ListDriversComponent } from '../list-drivers/list-drivers.component';
 
-import { Driver } from '../../../shared/models/Driver';
-import { TableHeader, TableAction } from '../../../shared/models/models';
-import { TableTemplateComponent } from '../../../shared/templates/table-template/table-template.component';
-
+import type { Driver } from '../../../shared/models/Driver';
+import type { TableAction } from '../../../shared/models/models';
 
 @Component({
   selector: 'app-delete-driver',
   standalone: true,
-  imports: [ StringToUpperPipe, TableTemplateComponent],
+  imports: [ ListDriversComponent ],
   templateUrl: './delete-driver.component.html',
   styleUrl: './delete-driver.component.css'
 })
 export class DeleteDriverComponent {
-  drivers: Driver[] = [];
-
   // Table Related Info
-  tableHeaders: TableHeader[] = [];
-  tableData: any[] = [];
-  tableActions: TableAction[] = [];
+  tableActions: TableAction[] | null = null;
 
   constructor(private db: DatabaseService) {} 
 
   ngOnInit(): void {
-    this.getDrivers();
-
-    // Update table data
-    this.tableHeaders = [
-      { key: 'driverId', label: 'ID' },
-      { key: 'driverName', label: 'Name' },
-      { key: 'driverDepartment', label: 'Department' },
-      { key: 'driverLicense', label: 'License' },
-      { key: 'driverIsActive', label: 'Is Active' },
-      { key: 'driverCreatedAt', label: 'Created At' }
-    ];
     this.tableActions = [
       {
         label: 'X',
@@ -45,17 +28,8 @@ export class DeleteDriverComponent {
     ];
   }
 
-  getDrivers(): void {
-    this.db.getDrivers().subscribe((drivers) => {
-      this.drivers = drivers;
-
-      this.tableData = this.drivers;
-    });
-  }
-
   deleteDriver(driverId: string): void {
     this.db.deleteDriver(driverId).subscribe(() => {
-      this.getDrivers();
     });
   }
 }

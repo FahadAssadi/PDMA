@@ -17,8 +17,8 @@ export class Text2SpeechComponent {
   socket: any;
   showPlayer: boolean = false;
 
+  audioSrc: string = '';
   audioText: string = '';
-  audioMap: Map<string, string> = new Map<string, string>();
 
   constructor(private cd: ChangeDetectorRef) {}
 
@@ -36,19 +36,15 @@ export class Text2SpeechComponent {
   }
 
   speakText(text: string): void {
-    this.audioText = text
+    this.socket.emit('text-to-speech', text);
 
-    if (!this.audioMap.has(text)) {
-      this.socket.emit('text-to-speech', text);
+    this.socket.on('text-to-speech', (data: any) => {
+      this.audioText = text;
+      this.audioSrc = './output/' + data + '.mp3';
+      this.showPlayer = true;
 
-      this.socket.on('text-to-speech', (data: any) => {
-        const audioPath = './output/' + data + '.mp3';
-        this.audioMap.set(text, audioPath);
+      this.cd.detectChanges();
+    });
 
-        this.cd.detectChanges();
-      });
-    } 
-
-    this.showPlayer = true;
   }
 }

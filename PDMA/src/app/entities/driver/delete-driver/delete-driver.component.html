@@ -1,11 +1,3 @@
-<div class="table-container">
-    @if(drivers.length > 0) {
-        <app-table-template 
-            [tableHeaders]="tableHeaders"
-            [tableData]="tableData" 
-            [tableActions]="tableActions">
-        </app-table-template>
-    } @else {
-        <h3 style="text-align: center;"> No Drivers Assigned to Packages </h3>
-    }
-</div>
+<app-list-drivers 
+    [tableActions] = "tableActions">
+</app-list-drivers>
