@@ -148,6 +148,11 @@ PDMA is a Package Delivery Management Application designed to manage drivers and
 - **Get Stats**: `GET /api/stats`
 - **Reset Stats**: `DELETE /api/stats`
 
+### Authentication Endpoints
+
+- **Login**: `POST /api/auth/login`
+- **Register**: `POST /api/auth/register`
+
 ## Socket.io Events
 
 ### Translation
@@ -167,6 +172,24 @@ PDMA is a Package Delivery Management Application designed to manage drivers and
 - **Event**: `generative-ai`
 - **Payload**: `{ text: string }`
 - **Response**: AI-generated result
+
+## Project Statistics
+
+- Track various statistics related to CRUD operations for drivers and packages.
+- View the statistics through the provided API endpoints.
+
+## Technologies Used
+
+- MEAN Stack
+- MongoDB
+- Express.js
+- Angular
+- Node.js
+- Firebase
+- Bootstrap
+- Socket.io
+- Google Cloud APIs (Text-to-Speech and Translation)
+- Gemini Generative Ai API
 
 ## License
 
