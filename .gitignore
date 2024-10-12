@@ -43,3 +43,6 @@ testem.log
 Thumbs.db
 
 /public/output
+
+# Environment variables
+.env
