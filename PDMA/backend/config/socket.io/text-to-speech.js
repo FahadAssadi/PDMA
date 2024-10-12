@@ -16,14 +16,20 @@ function textToSpeech(text, callback) {
     audioConfig: { audioEncoding: "MP3" },
   };
 
+  const fileName = path.join(process.cwd(), 'public/output', `${text}.mp3`);
+
+  // Check if the file already exists
+  if (fs.existsSync(fileName)) {
+    callback(text);
+    return;
+  }
+
   // Performs the Text-to-Speech request
   client.synthesizeSpeech(request, (err, response) => {
     if (err) {
       console.error("ERROR:", err);
       return;
     }
-
-    const fileName = path.join(process.cwd(), 'public/output', `${text}.mp3`);
 
     // Write the binary audio content to a local file
     fs.writeFile(fileName, response.audioContent, "binary", err => {
