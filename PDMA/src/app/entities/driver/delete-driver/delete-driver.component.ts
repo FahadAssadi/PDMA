@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { DatabaseService } from '../../../shared/services/database/database.service';
 import { ListDriversComponent } from '../list-drivers/list-drivers.component';
 

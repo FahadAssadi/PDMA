@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DatabaseService } from '../../../shared/services/database/database.service';
 import { StringToUpperPipe } from '../../../shared/pipes/string-to-upper/string-to-upper.pipe';
 import { ListPackagesComponent } from '../../package/list-packages/list-packages.component';
