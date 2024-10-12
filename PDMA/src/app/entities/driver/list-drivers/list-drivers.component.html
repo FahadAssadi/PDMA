@@ -1,5 +1,3 @@
-
-
 <div class="table-container">
     @if(drivers && drivers.length > 0) {
         <table class="table">
@@ -9,7 +7,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Department</th>
                     <th scope="col">License</th>
-                    <th scope="col">is Active</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Created At</th>
                     @if(tableActions && tableActions.length) {
                         <th scope="col">Actions</th>
@@ -23,7 +21,7 @@
                         <td>{{ driver.driverName | stringToUpper }}</td>
                         <td>{{ driver.driverDepartment }}</td>
                         <td>{{ driver.driverLicense }}</td>
-                        <td>{{ driver.driverIsActive }}</td>
+                        <td>{{ driver.driverIsActive ? 'Active' : 'Inactive' }}</td>
                         <td>{{ driver.driverCreatedAt }}</td>
                         @for(action of tableActions; track $index) {
                             <td>

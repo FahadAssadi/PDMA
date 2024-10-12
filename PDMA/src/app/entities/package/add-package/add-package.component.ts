@@ -14,6 +14,7 @@ import { Driver } from '../../../shared/models/Driver';
   styleUrl: './add-package.component.css'
 })
 export class AddPackageComponent {
+  package: Package = new Package();
   drivers: Driver[] = [];
 
   constructor(private db: DatabaseService, private router: Router) {}
@@ -28,9 +29,9 @@ export class AddPackageComponent {
     });
   }
 
-  package: Package = new Package();
-
   addPackage(): void {
+    console.log("Adding package", this.package);
+
     // Add package to database
     this.db.createPackage(this.package).subscribe({
       error: (err) => {

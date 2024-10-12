@@ -4,10 +4,12 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Title</th>
                     <th scope="col">Weight</th>
+                    <th scope="col">Destination</th>
+                    <th scope="col">Description</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Created At</th>
+                    <th scope="col">Assigned Driver</th>
                     @if(tableActions && tableActions.length) {
                         <th scope="col">Actions</th>
                     }
@@ -19,8 +21,10 @@
                         <td>{{ package.packageId }}</td>
                         <td>{{ package.packageTitle }}</td>
                         <td>{{ package.packageWeight | kgToG }}</td>
+                        <td>{{ package.packageDestination }}</td>
+                        <td>{{ package.packageDescription }}</td>
                         <td>{{ package.packageIsAllocated ? 'Allocated' : 'Not Allocated' }}</td>
-                        <td>{{ package.packageCreatedAt }}</td>
+                        <td>{{ package.driverId.driverId ? package.driverId.driverId : package.driverId }}</td>
                         @for(action of tableActions; track $index) {
                             <td>
                                 <button class="{{ action.style }}" (click)="action.function(package); getPackages()">

@@ -7,6 +7,7 @@ module.exports = {
         // Extract the package data from the request body
         let packageDetails = {
             packageTitle: req.body.packageTitle,
+            packageDescription: req.body.packageDescription,
             packageDestination: req.body.packageDestination,
             packageWeight: req.body.packageWeight,
             packageIsAllocated: req.body.packageIsAllocated,
