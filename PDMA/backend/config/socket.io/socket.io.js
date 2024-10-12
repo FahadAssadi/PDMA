@@ -19,6 +19,14 @@ module.exports = (server) => {
         io.emit('text-to-speech', fileName);
       });
     });
+
+    socket.on('generative-ai', (data) => {
+      console.log("called generative-ai");
+
+      require('./generative-ai')(data.text, (result) => {
+        io.emit('generative-ai', result);
+      });
+    });
     
   });
 }
