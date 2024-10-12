@@ -8,8 +8,14 @@ module.exports = (server) => {
       console.log('user disconnected');
     });
 
-    socket.on('text-to-speech', (text) => {
-      require('./text-to-speech')(text, (fileName) => {
+    socket.on('translate', (data) => {
+      require('./translate')(data.text, data.target, (translations) => {
+        io.emit('translate', translations);
+      });
+    });
+
+    socket.on('text-to-speech', (data) => {
+      require('./text-to-speech')(data.text, (fileName) => {
         io.emit('text-to-speech', fileName);
       });
     });

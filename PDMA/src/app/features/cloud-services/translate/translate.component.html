@@ -1,1 +1,23 @@
-<p>translate works!</p>
+<app-list-packages [tableActions]="tableActions"></app-list-packages>
+
+<div class="container text-center my-4">
+    <div class="form-container">
+
+        <div class="mb-3">
+            <label for="language">Language</label>
+            <select class="form-select" id="language" name="language" [(ngModel)]="targetLanguage">
+                <option value="fr" selected>French</option>
+                <option value="es">Spanish</option>
+                <option value="ja">Japanese</option>
+            </select>
+        </div>
+
+        @if (translatedText){
+            <h3> Translated Text </h3>
+
+            <div class="mb-3">
+                <textarea class="form-control" rows="5" [(ngModel)]="translatedText" readonly></textarea>
+            </div>
+        }
+    </div>
+</div>
